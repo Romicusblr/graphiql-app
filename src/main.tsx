@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import Page404 from './page/Page404';
+import WelcomePage from './page/WelcomePage';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Page404 />,
     children: [
+      {
+        path: '/',
+        element: <WelcomePage />,
+      },
       {
         path: 'main',
         element: <div>Edit</div>,

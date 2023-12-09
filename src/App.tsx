@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
+import Layout from './components/Layouts/Layout';
 
-function App() {
+const App = () => {
   return (
     <>
-      <div>Main page</div>
-      <Outlet />
+      <Layout>
+        <Outlet />
+      </Layout>
     </>
   );
-}
+};
 
 export default App;
