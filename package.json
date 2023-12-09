@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "fix": "prettier . --write",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "tailwind": "tailwindcss build -i src/index.css -o public/styles.css --watch"
   },
   "dependencies": {
     "react": "^18.2.0",
