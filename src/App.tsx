@@ -4,11 +4,9 @@ import Layout from '@/components/Layout';
 
 const App = () => {
   return (
-    <>
-      <Layout>
-        <Outlet />
-      </Layout>
-    </>
+    <Layout>
+      <Outlet />
+    </Layout>
   );
 };
 

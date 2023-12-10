@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
-import { UserAuth } from '@/types/types';
+import { UserAuth } from '@/types';
 
 const initialState: UserAuth = {
-  id: '123',
+  id: '',
   email: '',
   token: '',
 };
