@@ -1,1 +1,1 @@
-export * as auth from './firebase';
+export { default as auth } from './firebase';

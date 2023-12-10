@@ -9,7 +9,7 @@ import {
 } from 'firebase/auth';
 import {
   AuthApiInterface,
-  CreateUserDTO,
+  RegisterUserDTO,
   LoginUserDTO,
   UserAuth,
 } from '@/types';
@@ -17,12 +17,12 @@ import {
 class FirebaseAuthService implements AuthApiInterface {
   auth!: Auth;
 
-  FirebaseAuthService() {
+  constructor() {
     const app = initializeApp(firebaseConfig);
     this.auth = getAuth(app);
   }
 
-  async createUser(dto: CreateUserDTO): Promise<UserAuth> {
+  async register(dto: RegisterUserDTO): Promise<UserAuth> {
     const { user } = await createUserWithEmailAndPassword(
       this.auth,
       dto.email,

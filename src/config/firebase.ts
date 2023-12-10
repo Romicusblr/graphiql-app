@@ -1,8 +1,8 @@
 export default {
-  apiKey: 'AIzaSyBXxjuT688cKARcfdfaC7syO5gTjKq6_4U',
-  authDomain: 'graphiql-react-task.firebaseapp.com',
-  projectId: 'graphiql-react-task',
-  storageBucket: 'graphiql-react-task.appspot.com',
-  messagingSenderId: '990807357734',
-  appId: '1:990807357734:web:457f8e417e7deff747e9e7',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
