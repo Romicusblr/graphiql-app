@@ -1,3 +1,5 @@
+import LanguageToggle from '@/components/LanguageToggle';
+
 const Header = () => {
   return (
     <>
@@ -10,8 +12,8 @@ const Header = () => {
             <li className="inline-block py-3 px-2 hover:text-gray-600">
               <a href="#">Welcome</a>
             </li>
-            <li className="inline-block py-3 px-2 hover:text-gray-600">
-              <a href="#">Language Toggle</a>
+            <li className="inline-block py-3 px-2">
+              <LanguageToggle />
             </li>
             <li className="inline-block py-3 px-2 hover:text-gray-600">
               <a href="#">Sign Out</a>
