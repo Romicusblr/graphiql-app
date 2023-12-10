@@ -6,8 +6,8 @@ import store from '@/store';
 
 import './index.css';
 import App from './App';
-import ErrorPage from './page/ErrorPage';
-import WelcomePage from './page/WelcomePage';
+import ErrorPage from './pages/ErrorPage';
+import WelcomePage from './pages/WelcomePage';
 
 const router = createBrowserRouter([
   {
