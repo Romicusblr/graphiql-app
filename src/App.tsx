@@ -5,13 +5,11 @@ import { LocalizationProvider } from '@/context/LocalizationContext';
 
 const App = () => {
   return (
-    <>
-      <LocalizationProvider>
-        <Layout>
-          <Outlet />
-        </Layout>
-      </LocalizationProvider>
-    </>
+    <LocalizationProvider>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </LocalizationProvider>
   );
 };
 

@@ -6,8 +6,11 @@ import store from '@/store';
 
 import './index.css';
 import App from './App';
-import ErrorPage from './page/ErrorPage';
-import WelcomePage from './page/WelcomePage';
+import ErrorPage from './pages/ErrorPage';
+import WelcomePage from './pages/WelcomePage';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +28,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <div>Sign In / Sign Up</div>,
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'logout',
+        element: <Logout />,
       },
     ],
   },
@@ -38,4 +49,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </Provider>
   </React.StrictMode>
 );
-<App />;
