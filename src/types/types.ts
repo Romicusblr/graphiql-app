@@ -17,10 +17,3 @@ export interface AuthApiInterface {
   login(dto: LoginUserDTO): Promise<UserAuth>;
   logout(): Promise<void>;
 }
-
-export type Language = 'en' | 'ru';
-
-export interface LocalizationContextProps {
-  language: Language;
-  setLanguage: (language: Language) => void;
-}
