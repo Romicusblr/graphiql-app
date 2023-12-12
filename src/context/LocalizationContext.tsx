@@ -1,37 +1,31 @@
-import React from 'react';
-import { localeStrings, regions } from '@/context/constants';
+import React, { useContext, useState } from 'react';
+import {
+  Language,
+  LocalizationContextProps,
+  LocalizationProviderProps,
+} from '@/types';
 
-interface LocaleProviderProps {
-  children: React.ReactNode;
-}
+export const LocalizationContext = React.createContext<
+  LocalizationContextProps | undefined
+>(undefined);
 
-const initialState = {
-  strings: localeStrings[regions.en],
+export const useLocalization = () => {
+  return useContext(LocalizationContext);
 };
 
-const LocaleContext = React.createContext();
+export const LocalizationProvider = ({
+  children,
+}: LocalizationProviderProps) => {
+  const [language, setLanguage] = useState<Language>('en');
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'changeLocale': {
-      return {
-        ...state,
-        strings: localeStrings[action.payload.region],
-      };
-    }
-    default:
-      return state;
-  }
-};
-
-export const LocaleProvider = ({ children }: LocaleProviderProps) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const value = {
+    language,
+    setLanguage,
+  };
 
   return (
-    <LocaleContext.Provider value={{ state, dispatch }}>
+    <LocalizationContext.Provider value={value}>
       {children}
-    </LocaleContext.Provider>
+    </LocalizationContext.Provider>
   );
 };
-
-export const useLocale = () => React.useContext(LocaleContext);

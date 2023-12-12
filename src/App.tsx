@@ -1,15 +1,15 @@
 import './index.css';
 import { Outlet } from 'react-router-dom';
 import Layout from '@/components/Layout';
-import { LocaleProvider } from '@/context/LocalizationContext';
+import { LocalizationProvider } from '@/context/LocalizationContext';
 
 const App = () => {
   return (
-    <LocaleProvider>
+    <LocalizationProvider>
       <Layout>
         <Outlet />
       </Layout>
-    </LocaleProvider>
+    </LocalizationProvider>
   );
 };
 
