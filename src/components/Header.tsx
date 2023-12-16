@@ -1,13 +1,9 @@
 import LanguageToggle from '@/components/LanguageToggle';
 import { NavLink } from 'react-router-dom';
 import { useLocalization } from '@/context/LocalizationContext';
-import { LocalizationContextProps } from '@/types';
-import enStrings from '@/locales/en';
-import ruStrings from '@/locales/ru';
 
 const Header = () => {
-  const { language } = useLocalization() as LocalizationContextProps;
-  const strings = language === 'en' ? enStrings : ruStrings;
+  const { strings } = useLocalization();
 
   return (
     <>
