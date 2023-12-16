@@ -6,6 +6,7 @@ import {
   signOut,
   getAuth,
   Auth,
+  connectAuthEmulator,
 } from 'firebase/auth';
 import {
   AuthApiInterface,
@@ -19,7 +20,12 @@ class FirebaseAuthService implements AuthApiInterface {
 
   constructor() {
     const app = initializeApp(firebaseConfig);
-    this.auth = getAuth(app);
+    if (firebaseConfig.emulatorEnabled) {
+      this.auth = getAuth();
+      connectAuthEmulator(this.auth, 'http://127.0.0.1:9099');
+    } else {
+      this.auth = getAuth(app);
+    }
   }
 
   async register(dto: RegisterUserDTO): Promise<UserAuth> {
