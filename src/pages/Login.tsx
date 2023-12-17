@@ -1,57 +1,57 @@
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/store/slices/userSlice';
 import { auth } from '@/api';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ButtonSubmit from '@/UI/ButtonSubmit';
+import LabelForm from '@/UI/LabelForm';
+import InputForm from '@/UI/InputForm';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import schema from '@/utils/schema-validation';
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = async () => {
     const user = await auth.login({ email, password });
     dispatch(setUser(user));
     navigate('/');
   };
 
   return (
-    <form onSubmit={onSubmit} className="max-w-sm mx-auto my-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto my-4">
       <div className="mb-5">
-        <label
-          htmlFor="login"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Email
-        </label>
-        <input
+        <LabelForm htmlFor={'email'}>Email</LabelForm>
+        <InputForm
           type="text"
-          name="login"
-          className="input-text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          register={register}
+          onChange={setEmail}
         />
+        <p>{errors.email?.message}</p>
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Password
-        </label>
-        <input
+        <LabelForm htmlFor={'password'}>Password</LabelForm>
+        <InputForm
           type="password"
-          name="password"
-          className="input-text"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          register={register}
+          onChange={setPassword}
         />
       </div>
-      <button type="submit" className="submit-button">
-        Login
-      </button>
+      <p>{errors.password?.message}</p>
+      <ButtonSubmit />
     </form>
   );
 };
