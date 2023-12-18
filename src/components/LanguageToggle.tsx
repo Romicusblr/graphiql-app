@@ -1,9 +1,8 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import { Language, LocalizationContextProps } from '@/types';
+import { Language, REGIONS } from '@/locales/constants';
 
 const LanguageToggle = () => {
-  const { language, setLanguage } =
-    useLocalization() as LocalizationContextProps;
+  const { language, setLanguage } = useLocalization();
 
   return (
     <select
@@ -12,8 +11,11 @@ const LanguageToggle = () => {
       className="bg-gray-800 border-2 border-gray-400 rounded-lg cursor-pointer outline-none"
       onChange={(e) => setLanguage(e.target.value as Language)}
     >
-      <option value="en">en</option>
-      <option value="ru">ru</option>
+      {Object.keys(REGIONS).map((region) => (
+        <option key={region} value={region}>
+          {region.toLowerCase()}
+        </option>
+      ))}
     </select>
   );
 };

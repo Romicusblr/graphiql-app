@@ -30,6 +30,7 @@ class FirebaseAuthService implements AuthApiInterface {
     );
     return {
       id: user.uid,
+      name: user.displayName,
       email: user.email,
       token: await user.getIdToken(),
     };
@@ -41,8 +42,10 @@ class FirebaseAuthService implements AuthApiInterface {
       dto.email,
       dto.password
     );
+
     return {
       id: user.uid,
+      name: user.displayName,
       email: user.email,
       token: await user.getIdToken(),
     };

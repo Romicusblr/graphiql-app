@@ -4,6 +4,6 @@ const enStrings = {
   registerTitle: 'Register',
   logoutTitle: 'Logout',
   codeMirrorPlaceholder: '# Welcome to GraphiQL',
-};
+} as const;
 
 export default enStrings;

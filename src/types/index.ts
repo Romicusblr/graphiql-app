@@ -2,9 +2,10 @@ import React from 'react';
 
 export type UserAuth = {
   id: string;
+  name: string | null;
   email: string | null;
-  token: string | null;
-};
+  token: string;
+} | null;
 
 export type RegisterUserDTO = {
   name: string;
