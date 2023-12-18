@@ -32,6 +32,9 @@ const Header = () => {
             <li className="inline-block py-3 px-2 hover:text-gray-600">
               <NavLink to={'/logout'}>{strings.logoutTitle}</NavLink>
             </li>
+            <li className="inline-block py-3 px-2 hover:text-gray-600">
+              <NavLink to={'/codemirror'}>Code Mirror</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

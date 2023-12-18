@@ -2,7 +2,7 @@ import LinkGitHub from './UI/LinkGitHub';
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center shrink-0 bg-gray-800 px-8 py-1 text-white">
+    <footer className="flex justify-between items-center shrink-0 bg-gray-800 px-8 py-1 text-gray-400">
       <ul>
         <li>
           <LinkGitHub

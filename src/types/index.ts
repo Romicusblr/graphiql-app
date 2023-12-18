@@ -30,3 +30,8 @@ export interface LocalizationContextProps {
   language: Language;
   setLanguage: (language: Language) => void;
 }
+
+export type QueryEditor = {
+  query: string;
+  numberOfLines: number;
+};
