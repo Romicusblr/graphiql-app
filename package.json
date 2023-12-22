@@ -12,7 +12,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
     "@reduxjs/toolkit": "^2.0.1",
+    "@uiw/react-codemirror": "^4.21.21",
+    "codemirror-graphql": "^2.0.10",
     "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

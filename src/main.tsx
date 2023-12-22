@@ -11,6 +11,7 @@ import WelcomePage from './pages/WelcomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
+import { CodeEditor } from '@/components/CodeEditor';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         element: <Logout />,
+      },
+      {
+        path: 'codemirror',
+        element: <CodeEditor />,
       },
     ],
   },

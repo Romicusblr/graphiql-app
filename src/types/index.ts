@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type UserAuth = {
   id: string;
   name: string | null;
@@ -18,3 +20,19 @@ export interface AuthApiInterface {
   login(dto: LoginUserDTO): Promise<UserAuth>;
   logout(): Promise<void>;
 }
+
+export interface LocalizationProviderProps {
+  children: React.ReactNode;
+}
+
+export type Language = 'en' | 'ru';
+
+export interface LocalizationContextProps {
+  language: Language;
+  setLanguage: (language: Language) => void;
+}
+
+export type QueryEditor = {
+  query: string;
+  numberOfLines: number;
+};
