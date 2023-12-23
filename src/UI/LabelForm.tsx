@@ -9,7 +9,7 @@ const LabelForm: FC<PropsTypes> = ({ children, htmlFor }) => {
   return (
     <label
       htmlFor={htmlFor}
-      className="block mb-2 text-sm font-medium text-gray-900"
+      className="block mb-2 text-sm font-bold text-gray-700"
     >
       {children}
     </label>

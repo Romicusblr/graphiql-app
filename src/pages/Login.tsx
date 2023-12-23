@@ -38,7 +38,11 @@ const Login = () => {
           register={register}
           onChange={setEmail}
         />
-        <p>{errors.email?.message}</p>
+        {errors.email && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.email?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>Password</LabelForm>
@@ -50,7 +54,11 @@ const Login = () => {
           onChange={setPassword}
         />
       </div>
-      <p>{errors.password?.message}</p>
+      {errors.password && (
+        <p className="mt-2 p-1 text-white bg-red-800">
+          {errors.password?.message}
+        </p>
+      )}
       <ButtonSubmit />
     </form>
   );

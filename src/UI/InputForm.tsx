@@ -19,13 +19,15 @@ const InputForm: FC<PropsTypes> = ({
   return (
     <input
       type={type}
-      className="input-text"
       id={name}
       {...register(name)}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      className="block w-full rounded-md border-2 border-gray-400 p-1.5 text-gray-900 focus:outline-gray-700 sm:text-sm sm:leading-6 "
     />
   );
 };
 
 export default InputForm;
+
+//placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6
