@@ -3,6 +3,7 @@ import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
+import { CopyButton } from '@/components/buttons/CopyButton';
 
 interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   value: string;
@@ -30,6 +31,9 @@ const CodeEntry = () => {
       </div>
       <div className="absolute top-16 right-3">
         <ClearButton />
+      </div>
+      <div className="absolute top-28 right-3">
+        <CopyButton />
       </div>
     </div>
   );
