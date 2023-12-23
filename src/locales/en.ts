@@ -3,7 +3,7 @@ const enStrings = {
   loginTitle: 'Login',
   registerTitle: 'Register',
   logoutTitle: 'Logout',
-  codeMirrorPlaceholder: '# Welcome to GraphiQL',
+  codeMirrorPlaceholder: '# Welcome to CodeEditor',
 } as const;
 
 export default enStrings;
