@@ -1,5 +1,5 @@
-import { CodeEntry } from '@/components/GraphiQL/CodeEntry';
-import { CodeOutput } from '@/components/GraphiQL/CodeOutput';
+import { CodeEntry } from '@/components/CodeEditor/CodeEntry';
+import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
 
 const CodeEditor = () => {
   return (
