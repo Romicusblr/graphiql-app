@@ -2,6 +2,7 @@ import { useLocalization } from '@/context/LocalizationContext';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
 import { RunButton } from '@/components/buttons/RunButton';
+import { ClearButton } from '@/components/buttons/ClearButton';
 
 interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   value: string;
@@ -26,6 +27,9 @@ const CodeEntry = () => {
       </div>
       <div className="absolute top-3 right-3">
         <RunButton />
+      </div>
+      <div className="absolute top-16 right-3">
+        <ClearButton />
       </div>
     </div>
   );
