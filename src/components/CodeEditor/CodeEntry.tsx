@@ -1,12 +1,13 @@
 import { useLocalization } from '@/context/LocalizationContext';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
+import './CodeEditorStyles.css';
 
 interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   value: string;
   options: {
     lineNumbers: boolean;
   };
-  theme?: 'none' | 'light' | 'dark';
+  theme: 'none' | 'light' | 'dark';
 }
 
 const CodeEntry = () => {
