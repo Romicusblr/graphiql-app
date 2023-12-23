@@ -11,7 +11,7 @@ import WelcomePage from './pages/WelcomePage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
-import { CodeEditor } from '@/components/CodeEditor';
+import { CodeEditor } from '@/pages/CodeEditor';
 
 const router = createBrowserRouter([
   {
