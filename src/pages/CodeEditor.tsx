@@ -4,8 +4,12 @@ import { DocsButton } from '@/components/buttons/DocsButton';
 import { DropDownMenus } from '@/components/DropDownMenus';
 import { VariableEditor } from '@/components/VariableEditor';
 import { HistoryButton } from '@/components/buttons/HistoryButton';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const CodeEditor = () => {
+  const isOpen = useSelector((state: RootState) => state.isOpen);
+
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
@@ -22,9 +26,11 @@ const CodeEditor = () => {
             <CodeEntry />
             <CodeOutput />
           </div>
-          <div className="h-2/4">
-            <VariableEditor />
-          </div>
+          {isOpen && (
+            <div className="h-2/4">
+              <VariableEditor />
+            </div>
+          )}
         </div>
       </div>
       <div className="w-1/5">
