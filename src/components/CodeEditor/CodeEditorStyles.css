@@ -1,0 +1,20 @@
+.ͼ2 .cm-gutters {
+  background-color: transparent;
+  border-right: 1px solid transparent;
+}
+
+.ͼ2 .cm-activeLine {
+  background-color: transparent;
+}
+
+.ͼ2 .cm-activeLineGutter {
+  background-color: transparent;
+}
+
+.ͼ2 .cm-cursor {
+  border-left: 2px solid #9ca3af;
+}
+
+.ͼ2 .cm-cursor-primary {
+  border-left: 2px solid #9ca3af;
+}
