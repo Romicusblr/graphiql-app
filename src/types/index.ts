@@ -26,6 +26,10 @@ export type QueryEditor = {
   numberOfLines: number;
 };
 
+export type DropDownMenus = {
+  menuToggle: boolean;
+};
+
 export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   value: string;
   options: {
