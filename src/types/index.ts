@@ -27,7 +27,7 @@ export type QueryEditor = {
 };
 
 export type DropDownMenus = {
-  menuToggle: boolean;
+  isOpen: boolean;
 };
 
 export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
