@@ -1,4 +1,4 @@
-import runSvg from '../../icons/run.svg';
+import runSvg from '@/icons/run.svg';
 
 const RunButton = () => {
   return (

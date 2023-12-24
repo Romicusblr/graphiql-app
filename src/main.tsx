@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <Logout />,
       },
       {
-        path: 'codemirror',
+        path: 'app',
         element: <CodeEditor />,
       },
     ],

@@ -1,4 +1,4 @@
-import clearSvg from '../../icons/clear.svg';
+import clearSvg from '@/icons/clear.svg';
 
 const ClearButton = () => {
   return (

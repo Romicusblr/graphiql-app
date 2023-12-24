@@ -1,4 +1,4 @@
-import copySvg from '../../icons/copy.svg';
+import copySvg from '@/icons/copy.svg';
 
 const CopyButton = () => {
   return (
