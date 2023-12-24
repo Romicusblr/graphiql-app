@@ -4,6 +4,8 @@ const enStrings = {
   registerTitle: 'Register',
   logoutTitle: 'Logout',
   codeMirrorPlaceholder: '# Welcome to CodeEditor',
+  variableTitle: 'Variable',
+  headersTitle: 'Headers',
 } as const;
 
 export default enStrings;
