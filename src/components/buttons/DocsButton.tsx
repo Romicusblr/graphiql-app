@@ -1,4 +1,4 @@
-import docsSvg from '../../icons/docs.svg';
+import docsSvg from '@/icons/docs.svg';
 
 const DocsButton = () => {
   return (
