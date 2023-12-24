@@ -1,17 +1,10 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
+import CodeMirror from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
-
-interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
-  value: string;
-  options: {
-    lineNumbers: boolean;
-  };
-  theme: 'none' | 'light' | 'dark';
-}
+import { CustomCodeMirrorProps } from '@/types';
 
 const CodeEntry = () => {
   const { strings } = useLocalization();
