@@ -1,22 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { DropDownMenus } from '@/types';
-import { RootState } from '@/store';
 
 const initialState: DropDownMenus = {
-  menuToggle: false,
+  isOpen: false,
 };
 
-export const dropDownMenusSlice = createSlice({
+const dropDownMenusSlice: Slice<DropDownMenus> = createSlice({
   name: 'dropDownMenusSlice',
   initialState,
   reducers: {
-    setMenuToggle(state) {
-      state.menuToggle = !state.menuToggle;
+    setIsOpen: (state: DropDownMenus, actions: PayloadAction<boolean>) => {
+      state.isOpen = actions.payload;
     },
   },
 });
 
-export const { setMenuToggle } = dropDownMenusSlice.actions;
-export const selectMenuToggle = (state: RootState) => state.menuToggle;
-
-export default dropDownMenusSlice.reducer;
+export const { setIsOpen } = dropDownMenusSlice.actions;
+export const dropDownMenusSliceReducer = dropDownMenusSlice.reducer;
