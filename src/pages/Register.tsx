@@ -29,7 +29,10 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto my-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-2/5 max-w-xs mx-auto my-4"
+    >
       <div className="mb-5">
         <LabelForm htmlFor={'name'}>Name</LabelForm>
         <InputForm
@@ -39,7 +42,11 @@ const Register = () => {
           name="name"
           onChange={setName}
         />
-        <p>{errors.name?.message}</p>
+        {errors.name && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.name?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>Email</LabelForm>
@@ -50,7 +57,11 @@ const Register = () => {
           name="email"
           onChange={setEmail}
         />
-        <p>{errors.email?.message}</p>
+        {errors.email && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.email?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>Password</LabelForm>
@@ -61,7 +72,11 @@ const Register = () => {
           name="password"
           onChange={setPassword}
         />
-        <p>{errors.password?.message}</p>
+        {errors.password && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.password?.message}
+          </p>
+        )}
       </div>
       <ButtonSubmit />
     </form>

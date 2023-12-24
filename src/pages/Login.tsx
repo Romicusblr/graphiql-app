@@ -28,7 +28,10 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto my-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-2/5 max-w-xs mx-auto my-4"
+    >
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>Email</LabelForm>
         <InputForm
