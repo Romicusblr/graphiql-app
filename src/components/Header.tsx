@@ -11,9 +11,9 @@ const Header = () => {
 
   return (
     <header className="px-2 flex items-center justify-between bg-gray-800">
-      <a href="/" className="uppercase font-bold text-gray-400">
+      <NavLink className="uppercase font-bold text-gray-400" to={'/'}>
         GraphiQL
-      </a>
+      </NavLink>
       <nav>
         <ul className="font-semibold text-gray-400">
           <li className="inline-block py-3 px-2">
