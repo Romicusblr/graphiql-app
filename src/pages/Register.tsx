@@ -1,34 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { setUser } from '@/store/slices/userSlice';
 import { auth } from '@/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import schema from '@/utils/schema-validation';
+import { UserRegister, userRegisterSchema } from '@/utils/schema-validation';
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
 import { useLocalization } from '@/context/LocalizationContext';
 import CheckboxForm from '@/components/UI/CheckboxForm';
+import { RegisterUserDTO } from '@/types';
 
 const Register = () => {
   const { strings } = useLocalization();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(userRegisterSchema) });
 
-  const onSubmit = async () => {
-    const user = await auth.register({ name, email, password });
-    dispatch(setUser(user));
+  const onSubmit: SubmitHandler<UserRegister> = async (data) => {
+    await auth.register(data as RegisterUserDTO);
     navigate('/');
   };
 
@@ -45,10 +39,8 @@ const Register = () => {
         <LabelForm htmlFor={'name'}>{strings.nameTitle}</LabelForm>
         <InputForm
           type="text"
-          value={name}
           register={register}
           name="name"
-          onChange={setName}
         />
         {errors.name && (
           <p className="mt-2 p-1 text-white bg-red-800">
@@ -60,10 +52,8 @@ const Register = () => {
         <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
         <InputForm
           type="text"
-          value={email}
           register={register}
           name="email"
-          onChange={setEmail}
         />
         {errors.email && (
           <p className="mt-2 p-1 text-white bg-red-800">
@@ -75,10 +65,8 @@ const Register = () => {
         <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
         <InputForm
           type={checked ? 'text' : 'password'}
-          value={password}
           register={register}
           name="password"
-          onChange={setPassword}
         />
         <CheckboxForm checked={checked} onChange={handleChange} />
         {errors.password && (
