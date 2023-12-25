@@ -1,57 +1,64 @@
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/store/slices/userSlice';
 import { auth } from '@/api';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ButtonSubmit from '@/components/UI/ButtonSubmit';
+import LabelForm from '@/components/UI/LabelForm';
+import InputForm from '@/components/UI/InputForm';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { UserLogin, userLoginSchema } from '@/utils/schema-validation';
+import { useLocalization } from '@/context/LocalizationContext';
+import CheckboxForm from '@/components/UI/CheckboxForm';
+import { LoginUserDTO } from '@/types';
 
 const Login = () => {
+  const { strings } = useLocalization();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [checked, setChecked] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(userLoginSchema) });
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const user = await auth.login({ email, password });
+  const onSubmit: SubmitHandler<UserLogin> = async (data) => {
+    const user = await auth.login(data as LoginUserDTO);
     dispatch(setUser(user));
-    navigate('/');
+    navigate('/app');
+  };
+
+  const handleChange = () => {
+    setChecked(!checked);
   };
 
   return (
-    <form onSubmit={onSubmit} className="max-w-sm mx-auto my-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-2/5 max-w-xs mx-auto my-4"
+    >
       <div className="mb-5">
-        <label
-          htmlFor="login"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Email
-        </label>
-        <input
-          type="text"
-          name="login"
-          className="input-text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
+        <InputForm type="text" name="email" register={register} />
+        {errors.email && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.email?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          className="input-text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
+        <InputForm type="text" name="password" register={register} />
+        <CheckboxForm checked={checked} onChange={handleChange} />
+        {errors.password && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.password?.message}
+          </p>
+        )}
       </div>
-      <button type="submit" className="submit-button">
-        Login
-      </button>
+      <ButtonSubmit name="login" />
     </form>
   );
 };
