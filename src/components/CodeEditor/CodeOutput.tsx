@@ -10,7 +10,7 @@ const CodeOutput = () => {
   };
 
   return (
-    <div className="resize-none rounded-xl outline-none text-base border-4 border-gray-600 bg-gray-800 text-gray-400 p-2 overflow-auto w-2/4">
+    <div className="resize-none rounded-xl outline-none text-base border-4 border-gray-600 bg-gray-600 text-gray-400 p-2 overflow-auto w-2/4">
       <CodeMirror {...codeMirrorProps} />
     </div>
   );
