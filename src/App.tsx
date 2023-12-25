@@ -1,14 +1,16 @@
-import './index.css';
-import { Outlet } from 'react-router-dom';
-import Layout from '@/components/Layout';
+import '@/index.css';
 import { LocalizationProvider } from '@/context/LocalizationContext';
+import { RouterProvider } from 'react-router-dom';
+import { router } from '@/routes/routes';
+import { Provider } from 'react-redux';
+import store from '@/store';
 
 const App = () => {
   return (
     <LocalizationProvider>
-      <Layout>
-        <Outlet />
-      </Layout>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </LocalizationProvider>
   );
 };

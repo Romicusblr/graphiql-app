@@ -6,29 +6,28 @@ import { useNavigate } from 'react-router-dom';
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import schema from '@/utils/schema-validation';
+import { UserLogin, userLoginSchema } from '@/utils/schema-validation';
 import { useLocalization } from '@/context/LocalizationContext';
 import CheckboxForm from '@/components/UI/CheckboxForm';
+import { LoginUserDTO } from '@/types';
 
 const Login = () => {
   const { strings } = useLocalization();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(userLoginSchema) });
 
-  const onSubmit = async () => {
-    const user = await auth.login({ email, password });
+  const onSubmit: SubmitHandler<UserLogin> = async (data) => {
+    const user = await auth.login(data as LoginUserDTO);
     dispatch(setUser(user));
-    navigate('/');
+    navigate('/app');
   };
 
   const handleChange = () => {
@@ -42,13 +41,7 @@ const Login = () => {
     >
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
-        <InputForm
-          type="text"
-          value={email}
-          name="email"
-          register={register}
-          onChange={setEmail}
-        />
+        <InputForm type="text" name="email" register={register} />
         {errors.email && (
           <p className="mt-2 p-1 text-white bg-red-800">
             {errors.email?.message}
@@ -57,13 +50,7 @@ const Login = () => {
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
-        <InputForm
-          type="text"
-          value={password}
-          name="password"
-          register={register}
-          onChange={setPassword}
-        />
+        <InputForm type="text" name="password" register={register} />
         <CheckboxForm checked={checked} onChange={handleChange} />
         {errors.password && (
           <p className="mt-2 p-1 text-white bg-red-800">
