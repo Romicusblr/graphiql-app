@@ -1,73 +1,90 @@
 import { useDispatch } from 'react-redux';
 import { setUser } from '@/store/slices/userSlice';
 import { auth } from '@/api';
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import schema from '@/utils/schema-validation';
+import ButtonSubmit from '@/components/UI/ButtonSubmit';
+import LabelForm from '@/components/UI/LabelForm';
+import InputForm from '@/components/UI/InputForm';
+import { useLocalization } from '@/context/LocalizationContext';
+import { LocalizationContextProps } from '@/types';
+import enStrings from '@/locales/en';
+import ruStrings from '@/locales/ru';
 
 const Register = () => {
+  const { language } = useLocalization() as LocalizationContextProps;
+  const strings = language === 'en' ? enStrings : ruStrings;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = async () => {
     const user = await auth.register({ name, email, password });
     dispatch(setUser(user));
     navigate('/');
   };
 
   return (
-    <form onSubmit={onSubmit} className="max-w-sm mx-auto my-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-2/5 max-w-xs mx-auto my-4"
+    >
       <div className="mb-5">
-        <label
-          htmlFor="login"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Name
-        </label>
-        <input
+        <LabelForm htmlFor={'name'}>{strings.nameTitle}</LabelForm>
+        <InputForm
           type="text"
-          name="name"
-          className="input-text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          register={register}
+          name="name"
+          onChange={setName}
         />
+        {errors.name && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.name?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="login"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Email
-        </label>
-        <input
+        <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
+        <InputForm
           type="text"
-          name="login"
-          className="input-text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          register={register}
+          name="email"
+          onChange={setEmail}
         />
+        {errors.email && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.email?.message}
+          </p>
+        )}
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="password"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Password
-        </label>
-        <input
+        <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
+        <InputForm
           type="password"
-          name="password"
-          className="input-text"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          register={register}
+          name="password"
+          onChange={setPassword}
         />
+        {errors.password && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.password?.message}
+          </p>
+        )}
       </div>
-      <button type="submit" className="submit-button">
-        Login
-      </button>
+      <ButtonSubmit name="signup" />
     </form>
   );
 };
