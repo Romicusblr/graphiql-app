@@ -1,13 +1,21 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import { useAppDispatch } from '@/hooks/redux';
-import { setIsOpen } from '@/store/slices/dropDownMenusSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import {
+  selectHeadersIsOpen,
+  selectVariableIsOpen,
+  setHeadersIsOpen,
+  setVariableIsOpen,
+} from '@/store/slices/dropDownMenusSlice';
 
 const VariableEditorButton = () => {
   const { strings } = useLocalization();
   const dispatch = useAppDispatch();
+  const variableIsOpen = useAppSelector(selectVariableIsOpen);
+  const headersIsOpen = useAppSelector(selectHeadersIsOpen);
 
   const handleClick = () => {
-    dispatch(setIsOpen(true));
+    dispatch(setHeadersIsOpen(headersIsOpen && false));
+    dispatch(setVariableIsOpen(!variableIsOpen));
   };
 
   return (

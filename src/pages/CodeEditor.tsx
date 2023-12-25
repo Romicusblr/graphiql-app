@@ -4,12 +4,17 @@ import { DocsButton } from '@/components/buttons/DocsButton';
 import { DropDownMenus } from '@/components/DropDownMenus';
 import { VariableEditor } from '@/components/VariableEditor';
 import { HistoryButton } from '@/components/buttons/HistoryButton';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
 import { ApiSelection } from '@/components/ApiSelection';
+import { useAppSelector } from '@/hooks/redux';
+import { HeadersEditor } from '@/components/HeadersEditor';
+import {
+  selectHeadersIsOpen,
+  selectVariableIsOpen,
+} from '@/store/slices/dropDownMenusSlice';
 
 const CodeEditor = () => {
-  const isOpen = useSelector((state: RootState) => state.isOpen);
+  const variableIsOpen = useAppSelector(selectVariableIsOpen);
+  const headersIsOpen = useAppSelector(selectHeadersIsOpen);
 
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
@@ -27,9 +32,14 @@ const CodeEditor = () => {
             <CodeEntry />
             <CodeOutput />
           </div>
-          {isOpen && (
+          {variableIsOpen && (
             <div className="h-2/4">
               <VariableEditor />
+            </div>
+          )}
+          {headersIsOpen && (
+            <div className="h-2/4">
+              <HeadersEditor />
             </div>
           )}
         </div>
