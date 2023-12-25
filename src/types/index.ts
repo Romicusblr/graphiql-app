@@ -36,4 +36,5 @@ export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
     lineNumbers: boolean;
   };
   theme: 'none' | 'light' | 'dark';
+  readOnly?: boolean;
 }
