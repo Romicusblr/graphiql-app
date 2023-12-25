@@ -6,6 +6,7 @@ import { VariableEditor } from '@/components/VariableEditor';
 import { HistoryButton } from '@/components/buttons/HistoryButton';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { ApiSelection } from '@/components/ApiSelection';
 
 const CodeEditor = () => {
   const isOpen = useSelector((state: RootState) => state.isOpen);
@@ -33,8 +34,13 @@ const CodeEditor = () => {
           )}
         </div>
       </div>
-      <div className="w-1/5">
-        <DropDownMenus />
+      <div className="flex items-center">
+        <div className="w-1/5">
+          <DropDownMenus />
+        </div>
+        <div>
+          <ApiSelection />
+        </div>
       </div>
     </div>
   );
