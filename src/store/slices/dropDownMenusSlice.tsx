@@ -1,19 +1,36 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { DropDownMenus } from '@/types';
+import { RootState } from '@/store';
 
 const initialState: DropDownMenus = {
-  isOpen: false,
+  variableIsOpen: false,
+  headersIsOpen: false,
 };
 
 const dropDownMenusSlice: Slice<DropDownMenus> = createSlice({
   name: 'dropDownMenusSlice',
   initialState,
   reducers: {
-    setIsOpen: (state: DropDownMenus, actions: PayloadAction<boolean>) => {
-      state.isOpen = actions.payload;
+    setVariableIsOpen: (
+      state: DropDownMenus,
+      action: PayloadAction<boolean>
+    ) => {
+      state.variableIsOpen = action.payload;
+    },
+    setHeadersIsOpen: (
+      state: DropDownMenus,
+      action: PayloadAction<boolean>
+    ) => {
+      state.headersIsOpen = action.payload;
     },
   },
 });
 
-export const { setIsOpen } = dropDownMenusSlice.actions;
+export const { setVariableIsOpen, setHeadersIsOpen } =
+  dropDownMenusSlice.actions;
+export const selectVariableIsOpen = (state: RootState) =>
+  state.dropDownMenus.variableIsOpen;
+export const selectHeadersIsOpen = (state: RootState) =>
+  state.dropDownMenus.headersIsOpen;
+
 export const dropDownMenusSliceReducer = dropDownMenusSlice.reducer;
