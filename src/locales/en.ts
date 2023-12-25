@@ -6,6 +6,7 @@ const enStrings = {
   codeMirrorPlaceholder: '# Welcome to CodeEditor',
   variableTitle: 'Variable',
   headersTitle: 'Headers',
+  apiSelectionPlaceholder: 'enter api',
 } as const;
 
 export default enStrings;
