@@ -1,5 +1,4 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import React from 'react';
 
 const ButtonSubmit = ({ name }: { name: string }) => {
   const { strings } = useLocalization();
