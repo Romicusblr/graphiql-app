@@ -9,6 +9,8 @@ const ruStrings = {
   codeMirrorPlaceholder: '# Добро пожаловать в CodeEditor',
   variableTitle: 'Переменная',
   headersTitle: 'Заголовки',
+  showPassword: 'Показать пароль',
+  hidePassword: 'Скрыть пароль',
 } as const;
 
 export default ruStrings;
