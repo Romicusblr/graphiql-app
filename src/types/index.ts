@@ -26,10 +26,16 @@ export type QueryEditor = {
   numberOfLines: number;
 };
 
+export type DropDownMenus = {
+  variableIsOpen: boolean;
+  headersIsOpen: boolean;
+};
+
 export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   value: string;
   options: {
     lineNumbers: boolean;
   };
   theme: 'none' | 'light' | 'dark';
+  readOnly?: boolean;
 }

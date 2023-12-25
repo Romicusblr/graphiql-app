@@ -9,6 +9,7 @@ const enStrings = {
   codeMirrorPlaceholder: '# Welcome to CodeEditor',
   variableTitle: 'Variable',
   headersTitle: 'Headers',
+  apiSelectionPlaceholder: 'enter api',
   showPassword: 'Show password',
   hidePassword: 'Hide password',
 } as const;
