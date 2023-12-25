@@ -10,17 +10,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schema from '@/utils/schema-validation';
 import { useLocalization } from '@/context/LocalizationContext';
-import { LocalizationContextProps } from '@/types';
-import enStrings from '@/locales/en';
-import ruStrings from '@/locales/ru';
+import CheckboxForm from '@/components/UI/CheckboxForm';
 
 const Login = () => {
-  const { language } = useLocalization() as LocalizationContextProps;
-  const strings = language === 'en' ? enStrings : ruStrings;
+  const { strings } = useLocalization();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [checked, setChecked] = useState(false);
   const {
     register,
     handleSubmit,
@@ -31,6 +29,10 @@ const Login = () => {
     const user = await auth.login({ email, password });
     dispatch(setUser(user));
     navigate('/');
+  };
+
+  const handleChange = () => {
+    setChecked(!checked);
   };
 
   return (
@@ -56,18 +58,19 @@ const Login = () => {
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
         <InputForm
-          type="password"
+          type="text"
           value={password}
           name="password"
           register={register}
           onChange={setPassword}
         />
+        <CheckboxForm checked={checked} onChange={handleChange} />
+        {errors.password && (
+          <p className="mt-2 p-1 text-white bg-red-800">
+            {errors.password?.message}
+          </p>
+        )}
       </div>
-      {errors.password && (
-        <p className="mt-2 p-1 text-white bg-red-800">
-          {errors.password?.message}
-        </p>
-      )}
       <ButtonSubmit name="login" />
     </form>
   );
