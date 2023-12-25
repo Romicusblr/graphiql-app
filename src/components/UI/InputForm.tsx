@@ -29,5 +29,3 @@ const InputForm: FC<PropsTypes> = ({
 };
 
 export default InputForm;
-
-//placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6
