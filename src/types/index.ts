@@ -1,10 +1,11 @@
-import React from 'react';
+import { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 
 export type UserAuth = {
   id: string;
+  name: string | null;
   email: string | null;
-  token: string | null;
-};
+  token: string;
+} | null;
 
 export type RegisterUserDTO = {
   name: string;
@@ -20,13 +21,15 @@ export interface AuthApiInterface {
   logout(): Promise<void>;
 }
 
-export interface LocalizationProviderProps {
-  children: React.ReactNode;
-}
+export type QueryEditor = {
+  query: string;
+  numberOfLines: number;
+};
 
-export type Language = 'en' | 'ru';
-
-export interface LocalizationContextProps {
-  language: Language;
-  setLanguage: (language: Language) => void;
+export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
+  value: string;
+  options: {
+    lineNumbers: boolean;
+  };
+  theme: 'none' | 'light' | 'dark';
 }

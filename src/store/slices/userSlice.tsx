@@ -1,26 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store';
 import { UserAuth } from '@/types';
 
-const initialState: UserAuth = {
-  id: '',
-  email: '',
-  token: '',
-};
+const initialState = null as UserAuth;
 
 export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
-    setUser(state, action) {
-      state.id = action.payload.id;
-      state.email = action.payload.email;
-      state.token = action.payload.token;
+    setUser(_, action: PayloadAction<UserAuth>) {
+      return action.payload;
     },
-    removeUser(state) {
-      state.id = '';
-      state.email = '';
-      state.token = '';
+    removeUser() {
+      return null;
     },
   },
 });
