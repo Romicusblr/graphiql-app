@@ -10,13 +10,9 @@ import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
 import { useLocalization } from '@/context/LocalizationContext';
-import { LocalizationContextProps } from '@/types';
-import enStrings from '@/locales/en';
-import ruStrings from '@/locales/ru';
 
 const Register = () => {
-  const { language } = useLocalization() as LocalizationContextProps;
-  const strings = language === 'en' ? enStrings : ruStrings;
+  const { strings } = useLocalization();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState('');

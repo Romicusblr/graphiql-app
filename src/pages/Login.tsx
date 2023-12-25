@@ -10,13 +10,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import schema from '@/utils/schema-validation';
 import { useLocalization } from '@/context/LocalizationContext';
-import { LocalizationContextProps } from '@/types';
-import enStrings from '@/locales/en';
-import ruStrings from '@/locales/ru';
 
 const Login = () => {
-  const { language } = useLocalization() as LocalizationContextProps;
-  const strings = language === 'en' ? enStrings : ruStrings;
+  const { strings } = useLocalization();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');

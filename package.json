@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "fix": "prettier . --write",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ts": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",

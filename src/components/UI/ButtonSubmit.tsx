@@ -1,12 +1,7 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import enStrings from '@/locales/en';
-import ruStrings from '@/locales/ru';
-import { LocalizationContextProps } from '@/types';
-import React from 'react';
 
 const ButtonSubmit = ({ name }: { name: string }) => {
-  const { language } = useLocalization() as LocalizationContextProps;
-  const strings = language === 'en' ? enStrings : ruStrings;
+  const { strings } = useLocalization();
   return (
     <button
       type="submit"
