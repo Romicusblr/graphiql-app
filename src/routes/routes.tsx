@@ -1,5 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
-
+import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFoundPage from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/components/ErrorBoundary/errorBoundary';
 import { CodeEditor } from '@/pages/CodeEditor';
@@ -9,6 +8,7 @@ import Login from '@/pages/Login';
 import WelcomePage from '@/pages/WelcomePage';
 import Layout from '@/components/Layout';
 import ErrorPage from '@/pages/ErrorPage';
+import store from '@/store';
 
 const routes = [
   {
@@ -34,6 +34,7 @@ const routes = [
       },
       {
         path: 'app',
+        loader: protectedLoader,
         element: <CodeEditor />,
       },
     ],
@@ -44,7 +45,18 @@ const routes = [
   },
 ].map((route) => ({
   ...route,
-  element: <ErrorBoundary fallback={<ErrorPage />}>{route.element}</ErrorBoundary>,
+  element: (
+    <ErrorBoundary fallback={<ErrorPage />}>{route.element}</ErrorBoundary>
+  ),
 }));
+
+function protectedLoader() {
+  const { user } = store.getState();
+
+  if (!user) {
+    return redirect('/login');
+  }
+  return null;
+}
 
 export const router = createBrowserRouter(routes);
