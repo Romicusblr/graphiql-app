@@ -6,8 +6,9 @@ import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
 import { CustomCodeMirrorProps } from '@/types';
 
-const CodeEntry = () => {
+const CodeInput = () => {
   const { strings } = useLocalization();
+
   const codeMirrorProps: CustomCodeMirrorProps = {
     value: strings.codeMirrorPlaceholder,
     options: { lineNumbers: true },
@@ -32,4 +33,4 @@ const CodeEntry = () => {
   );
 };
 
-export { CodeEntry };
+export { CodeInput };

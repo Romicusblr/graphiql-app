@@ -22,8 +22,8 @@ export interface AuthApiInterface {
 }
 
 export type QueryEditor = {
+  apiUrl: string;
   query: string;
-  numberOfLines: number;
 };
 
 export type DropDownMenus = {
