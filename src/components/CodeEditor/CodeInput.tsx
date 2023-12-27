@@ -1,7 +1,6 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import CodeMirror from '@uiw/react-codemirror';
+import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
-import { CustomCodeMirrorProps } from '@/types';
 import { useAppDispatch } from '@/hooks/redux';
 import { setQuery } from '@/store/slices/appSlice';
 
@@ -13,9 +12,9 @@ const CodeInput = () => {
     dispatch(setQuery(newValue));
   };
 
-  const codeMirrorProps: CustomCodeMirrorProps = {
-    value: strings.codeMirrorPlaceholder,
-    options: { lineNumbers: true },
+  const codeMirrorProps: ReactCodeMirrorProps = {
+    placeholder: strings.codeMirrorPlaceholder,
+    basicSetup: { lineNumbers: true },
     theme: 'none',
     onChange: handleChange,
   };
