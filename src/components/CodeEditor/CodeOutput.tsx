@@ -1,9 +1,13 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { CustomCodeMirrorProps } from '@/types';
+import { useAppSelector } from '@/hooks/redux';
+import { selectOutput } from '@/store/slices/appSlice';
 
 const CodeOutput = () => {
+  const output = useAppSelector(selectOutput);
+
   const codeMirrorProps: CustomCodeMirrorProps = {
-    value: '',
+    value: output,
     options: { lineNumbers: true },
     theme: 'none',
     readOnly: true,

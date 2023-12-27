@@ -14,15 +14,37 @@ import {
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
+import { selectApiUrl, selectQuery, setOutput } from '@/store/slices/appSlice';
+import { useDispatch } from 'react-redux';
 
 const CodeEditor = () => {
+  const dispatch = useDispatch();
   const variableIsOpen = useAppSelector(selectVariableIsOpen);
   const headersIsOpen = useAppSelector(selectHeadersIsOpen);
+  const apiUrl = useAppSelector(selectApiUrl);
+  const query = useAppSelector(selectQuery);
+  // TODO: add headers from store
+  // const headers = useAppSelector(selectHeaders);
+  const headers = {};
 
-  const runQuery = () => {
+  const runQuery = async () => {
+    try {
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify({ query }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          ...headers,
+        },
+      });
+      const data = await res.json();
+      dispatch(setOutput(JSON.stringify(data)));
+    } catch (error) {
+      dispatch(setOutput(JSON.stringify(error)));
+    }
+  };
 
-  }
-  
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
@@ -36,7 +58,6 @@ const CodeEditor = () => {
         </div>
         <div className="flex flex-col w-full h-full">
           <div className="flex w-full h-full">
-            
             <div className="relative resize-none rounded-xl outline-none border-4 border-gray-600 bg-gray-800 text-gray-400 p-2 overflow-auto w-2/4">
               <div className="w-5/6 text-base">
                 <CodeInput />
