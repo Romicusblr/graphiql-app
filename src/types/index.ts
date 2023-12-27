@@ -1,5 +1,3 @@
-import { ReactCodeMirrorProps } from '@uiw/react-codemirror';
-
 export type UserAuth = {
   id: string;
   name: string | null;
@@ -24,6 +22,7 @@ export interface AuthApiInterface {
 export type QueryEditor = {
   apiUrl: string;
   query: string;
+  output: string;
   variable: string;
   headers: string;
 };
@@ -32,13 +31,3 @@ export type DropDownMenus = {
   variableIsOpen: boolean;
   headersIsOpen: boolean;
 };
-
-export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
-  value: string;
-  options: {
-    lineNumbers: boolean;
-  };
-  theme: 'none' | 'light' | 'dark';
-  readOnly?: boolean;
-  onChange?: (newValue: string) => void,
-}

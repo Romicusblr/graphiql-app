@@ -1,22 +1,21 @@
-import CodeMirror from '@uiw/react-codemirror';
-import { CustomCodeMirrorProps } from '@/types';
+import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import { useLocalization } from '@/context/LocalizationContext';
-import {useAppDispatch} from '@/hooks/redux';
-import {setHeaders} from '@/store/slices/appSlice';
+import { useAppDispatch } from '@/hooks/redux';
+import { setHeaders } from '@/store/slices/appSlice';
 
 const HeadersEditor = () => {
   const { strings } = useLocalization();
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-    const handleChange = (newValue: string) => {
-        dispatch(setHeaders(newValue));
-    };
+  const handleChange = (newValue: string) => {
+    dispatch(setHeaders(newValue));
+  };
 
-  const CodeMirrorProps: CustomCodeMirrorProps = {
+  const CodeMirrorProps: ReactCodeMirrorProps = {
     value: '',
-    options: { lineNumbers: true },
+    basicSetup: { lineNumbers: true },
     theme: 'none',
-      onChange: handleChange,
+    onChange: handleChange,
   };
 
   return (
