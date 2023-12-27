@@ -5,14 +5,22 @@ import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
 import { CustomCodeMirrorProps } from '@/types';
+import { useAppDispatch } from '@/hooks/redux';
+import { setQuery } from '@/store/slices/appSlice';
 
 const CodeInput = () => {
   const { strings } = useLocalization();
+  const dispatch = useAppDispatch();
+
+  const handleChange = (newValue: string) => {
+    dispatch(setQuery(newValue));
+  };
 
   const codeMirrorProps: CustomCodeMirrorProps = {
     value: strings.codeMirrorPlaceholder,
     options: { lineNumbers: true },
     theme: 'none',
+    onChange: handleChange,
   };
 
   return (

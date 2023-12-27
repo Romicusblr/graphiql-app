@@ -15,7 +15,7 @@ import {
 const CodeEditor = () => {
   const variableIsOpen = useAppSelector(selectVariableIsOpen);
   const headersIsOpen = useAppSelector(selectHeadersIsOpen);
-  
+
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
