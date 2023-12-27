@@ -24,6 +24,8 @@ export interface AuthApiInterface {
 export type QueryEditor = {
   apiUrl: string;
   query: string;
+  variable: string;
+  headers: string;
 };
 
 export type DropDownMenus = {
@@ -38,4 +40,5 @@ export interface CustomCodeMirrorProps extends ReactCodeMirrorProps {
   };
   theme: 'none' | 'light' | 'dark';
   readOnly?: boolean;
+  onChange?: (newValue: string) => void,
 }
