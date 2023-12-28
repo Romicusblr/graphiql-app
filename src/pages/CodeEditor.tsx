@@ -7,7 +7,10 @@ import { HistoryButton } from '@/components/buttons/HistoryButton';
 import { ApiSelection } from '@/components/ApiSelection';
 import { useAppSelector } from '@/hooks/redux';
 import { HeadersEditor } from '@/components/HeadersEditor';
-import { selectHeadersIsOpen, selectVariableIsOpen } from '@/store/slices/dropDownMenusSlice';
+import {
+  selectHeadersIsOpen,
+  selectVariableIsOpen,
+} from '@/store/slices/dropDownMenusSlice';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
