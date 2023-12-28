@@ -16,6 +16,7 @@ import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
 import { selectApiUrl, selectQuery, setOutput } from '@/store/slices/appSlice';
 import { useDispatch } from 'react-redux';
+import { prettifyJson } from '@/utils/prettyfier';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ const CodeEditor = () => {
   const headers = {};
 
   const runQuery = async () => {
+    if (!query || !apiUrl) {
+      return;
+    }
+
     try {
       const res = await fetch(apiUrl, {
         method: 'POST',
@@ -39,9 +44,11 @@ const CodeEditor = () => {
         },
       });
       const data = await res.json();
-      dispatch(setOutput(JSON.stringify(data)));
+      const output = await prettifyJson(JSON.stringify(data));
+      dispatch(setOutput(output));
     } catch (error) {
-      dispatch(setOutput(JSON.stringify(error)));
+      const output = await prettifyJson(JSON.stringify(error));
+      dispatch(setOutput(output));
     }
   };
 
