@@ -7,7 +7,7 @@ const initialState: App = {
   query: '',
   output: '',
   variable: '',
-  headers: '',
+  headers: {},
 };
 
 export const appSlice = createSlice({

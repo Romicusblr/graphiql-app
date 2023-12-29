@@ -24,7 +24,7 @@ export type QueryEditor = {
   query: string;
   output: string;
   variable: string;
-  headers: string;
+  headers: Record<string, string>;
 };
 
 export type DropDownMenus = {
