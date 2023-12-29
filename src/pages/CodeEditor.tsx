@@ -14,10 +14,16 @@ import {
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
-import {selectApiUrl, selectHeaders, selectQuery, setOutput} from '@/store/slices/appSlice';
+import {
+  selectApiUrl,
+  selectHeaders,
+  selectQuery,
+  setOutput,
+  setQuery,
+} from '@/store/slices/appSlice';
 import { useDispatch } from 'react-redux';
-import { prettifyJson } from '@/utils/prettyfier';
-import {PrettifyButton} from '@/components/buttons/PrettifyButton';
+import { prettifyGraphql, prettifyJson } from '@/utils/prettyfier';
+import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -28,7 +34,7 @@ const CodeEditor = () => {
   const headers = useAppSelector(selectHeaders);
 
   const runQuery = async () => {
-    if (!query || !apiUrl) {
+    if (!query.trim() || !apiUrl.trim()) {
       return;
     }
 
@@ -51,9 +57,13 @@ const CodeEditor = () => {
     }
   };
 
-  const prettify = () => {
-    console.log('prettify')
-  }
+  const prettify = async () => {
+    if (!query.trim()) {
+      return;
+    }
+    const prettified = await prettifyGraphql(query);
+    dispatch(setQuery(prettified));
+  };
 
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
