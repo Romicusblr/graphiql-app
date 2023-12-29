@@ -14,9 +14,10 @@ import {
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
-import { selectApiUrl, selectQuery, setOutput } from '@/store/slices/appSlice';
+import {selectApiUrl, selectHeaders, selectQuery, setOutput} from '@/store/slices/appSlice';
 import { useDispatch } from 'react-redux';
 import { prettifyJson } from '@/utils/prettyfier';
+import {PrettifyButton} from '@/components/buttons/PrettifyButton';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const CodeEditor = () => {
   const headersIsOpen = useAppSelector(selectHeadersIsOpen);
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
-  // TODO: add headers from store
-  // const headers = useAppSelector(selectHeaders);
-  const headers = {};
+  const headers = useAppSelector(selectHeaders);
 
   const runQuery = async () => {
     if (!query || !apiUrl) {
@@ -52,6 +51,10 @@ const CodeEditor = () => {
     }
   };
 
+  const prettify = () => {
+    console.log('prettify')
+  }
+
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
@@ -73,9 +76,12 @@ const CodeEditor = () => {
                 <RunButton handleClick={runQuery} />
               </div>
               <div className="absolute top-16 right-3">
-                <ClearButton />
+                <PrettifyButton handleClick={prettify} />
               </div>
               <div className="absolute top-28 right-3">
+                <ClearButton />
+              </div>
+              <div className="absolute top-40 right-3">
                 <CopyButton />
               </div>
             </div>
