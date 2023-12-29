@@ -1,12 +1,13 @@
 import { useLocalization } from '@/context/LocalizationContext';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
-import { useAppDispatch } from '@/hooks/redux';
-import { setQuery } from '@/store/slices/appSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { selectQuery, setQuery } from '@/store/slices/appSlice';
 
 const CodeInput = () => {
   const { strings } = useLocalization();
   const dispatch = useAppDispatch();
+  const query = useAppSelector(selectQuery);
 
   const handleChange = (newValue: string) => {
     dispatch(setQuery(newValue));
@@ -14,6 +15,7 @@ const CodeInput = () => {
 
   const codeMirrorProps: ReactCodeMirrorProps = {
     placeholder: strings.codeMirrorPlaceholder,
+    value: query,
     basicSetup: { lineNumbers: true },
     theme: 'none',
     onChange: handleChange,
