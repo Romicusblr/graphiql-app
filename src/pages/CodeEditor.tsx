@@ -34,7 +34,7 @@ const CodeEditor = () => {
   const headers = useAppSelector(selectHeaders);
 
   const runQuery = async () => {
-    if (!query || !apiUrl) {
+    if (!query.trim() || !apiUrl.trim()) {
       return;
     }
 
@@ -58,7 +58,7 @@ const CodeEditor = () => {
   };
 
   const prettify = async () => {
-    if (!query) {
+    if (!query.trim()) {
       return;
     }
     const prettified = await prettifyGraphql(query);
