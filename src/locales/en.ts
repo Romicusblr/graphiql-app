@@ -12,6 +12,8 @@ const enStrings = {
   apiSelectionPlaceholder: 'enter api',
   showPassword: 'Show password',
   hidePassword: 'Hide password',
+  runButton: 'Run query',
+  prettifyButton: 'Prettify'
 } as const;
 
 export default enStrings;
