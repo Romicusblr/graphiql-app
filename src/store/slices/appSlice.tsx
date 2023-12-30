@@ -8,6 +8,7 @@ const initialState: App = {
   output: '',
   variable: '',
   headers: {},
+  schema: '',
 };
 
 export const appSlice = createSlice({
@@ -29,15 +30,19 @@ export const appSlice = createSlice({
     setHeaders(state, action) {
       state.headers = action.payload;
     },
+    setSchema(state, action) {
+      state.schema = action.payload;
+    },
   },
 });
 
-export const { setApiUrl, setQuery, setVariable, setHeaders, setOutput } =
+export const { setApiUrl, setQuery, setVariable, setHeaders, setOutput, setSchema } =
   appSlice.actions;
 export const selectQuery = (state: RootState) => state.app.query;
 export const selectApiUrl = (state: RootState) => state.app.apiUrl;
 export const selectOutput = (state: RootState) => state.app.output;
 export const selectVariable = (state: RootState) => state.app.variable;
 export const selectHeaders = (state: RootState) => state.app.headers;
+export const selectSchema = (state: RootState) => state.app.schema;
 
 export default appSlice.reducer;

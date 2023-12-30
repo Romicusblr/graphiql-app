@@ -12,7 +12,7 @@ const enStrings = {
   apiSelectionPlaceholder: 'enter api',
   showPassword: 'Show password',
   hidePassword: 'Hide password',
-  docsTitle: 'Docs'
+  docsTitle: 'Docs',
 } as const;
 
 export default enStrings;
