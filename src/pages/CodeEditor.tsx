@@ -8,22 +8,29 @@ import { ApiSelection } from '@/components/ApiSelection';
 import { useAppSelector } from '@/hooks/redux';
 import { HeadersEditor } from '@/components/HeadersEditor';
 import {
+  selectDocsIsOpen,
   selectHeadersIsOpen,
   selectVariableIsOpen,
 } from '@/store/slices/dropDownMenusSlice';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import { CopyButton } from '@/components/buttons/CopyButton';
-import {selectApiUrl, selectHeaders, selectQuery, setOutput} from '@/store/slices/appSlice';
+import {
+  selectApiUrl,
+  selectHeaders,
+  selectQuery,
+  setOutput,
+} from '@/store/slices/appSlice';
 import { useDispatch } from 'react-redux';
 import { prettifyJson } from '@/utils/prettyfier';
-import {PrettifyButton} from '@/components/buttons/PrettifyButton';
-import {DocsExplorer} from '@/components/DocsExplorer';
+import { PrettifyButton } from '@/components/buttons/PrettifyButton';
+import { DocsExplorer } from '@/components/DocsExplorer';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
   const variableIsOpen = useAppSelector(selectVariableIsOpen);
   const headersIsOpen = useAppSelector(selectHeadersIsOpen);
+  const docsIsOpen = useAppSelector(selectDocsIsOpen);
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
@@ -53,8 +60,8 @@ const CodeEditor = () => {
   };
 
   const prettify = () => {
-    console.log('prettify')
-  }
+    console.log('prettify');
+  };
 
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
@@ -67,9 +74,11 @@ const CodeEditor = () => {
             <HistoryButton />
           </div>
         </div>
-        <div>
-          <DocsExplorer />
-        </div>
+        {docsIsOpen && (
+          <div>
+            <DocsExplorer />
+          </div>
+        )}
         <div className="flex flex-col w-full h-full">
           <div className="flex w-full h-full">
             <div className="relative resize-none rounded-xl outline-none border-4 border-gray-600 bg-gray-800 text-gray-400 p-2 overflow-auto w-2/4">

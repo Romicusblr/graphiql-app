@@ -24,10 +24,7 @@ const dropDownMenusSlice: Slice<DropDownMenus> = createSlice({
     ) => {
       state.headersIsOpen = action.payload;
     },
-    setDocsIsOpen: (
-        state: DropDownMenus,
-        action: PayloadAction<boolean>
-    ) => {
+    setDocsIsOpen: (state: DropDownMenus, action: PayloadAction<boolean>) => {
       state.docsIsOpen = action.payload;
     },
   },
@@ -40,6 +37,6 @@ export const selectVariableIsOpen = (state: RootState) =>
 export const selectHeadersIsOpen = (state: RootState) =>
   state.dropDownMenus.headersIsOpen;
 export const selectDocsIsOpen = (state: RootState) =>
-    state.dropDownMenus.docsIsOpen;
+  state.dropDownMenus.docsIsOpen;
 
 export const dropDownMenusSliceReducer = dropDownMenusSlice.reducer;
