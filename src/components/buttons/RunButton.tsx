@@ -1,11 +1,8 @@
 import { useLocalization } from '@/context/LocalizationContext';
 import runSvg from '@/icons/run.svg';
+import { IButtonProps } from '@/types';
 
-interface RunButtonProps {
-  handleClick: () => void; // Define the type for the handleClick function
-}
-
-const RunButton: React.FC<RunButtonProps> = ({ handleClick }) => {
+const RunButton: React.FC<IButtonProps> = ({ handleClick }) => {
   const { strings } = useLocalization();
   
   return (

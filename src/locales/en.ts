@@ -13,7 +13,8 @@ const enStrings = {
   showPassword: 'Show password',
   hidePassword: 'Hide password',
   runButton: 'Run query',
-  prettifyButton: 'Prettify'
+  prettifyButton: 'Prettify',
+  clearButton: 'Clear'
 } as const;
 
 export default enStrings;

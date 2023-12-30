@@ -1,12 +1,9 @@
 import { useLocalization } from '@/context/LocalizationContext';
 import prettifySvg from '@/icons/prettify.svg';
+import { IButtonProps } from '@/types';
 import React from 'react';
 
-interface PrettifyButtonProps {
-  handleClick: () => void;
-}
-
-const PrettifyButton: React.FC<PrettifyButtonProps> = ({ handleClick }) => {
+const PrettifyButton: React.FC<IButtonProps> = ({ handleClick }) => {
   const { strings } = useLocalization();
 
   return (
