@@ -12,6 +12,7 @@ const ruStrings = {
   apiSelectionPlaceholder: 'введите api',
   showPassword: 'Показать пароль',
   hidePassword: 'Скрыть пароль',
+  docsTitle: 'Документация'
 } as const;
 
 export default ruStrings;

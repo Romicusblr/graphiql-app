@@ -30,4 +30,5 @@ export type QueryEditor = {
 export type DropDownMenus = {
   variableIsOpen: boolean;
   headersIsOpen: boolean;
+  docsIsOpen: boolean;
 };

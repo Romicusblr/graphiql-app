@@ -18,6 +18,7 @@ import {selectApiUrl, selectHeaders, selectQuery, setOutput} from '@/store/slice
 import { useDispatch } from 'react-redux';
 import { prettifyJson } from '@/utils/prettyfier';
 import {PrettifyButton} from '@/components/buttons/PrettifyButton';
+import {DocsExplorer} from '@/components/DocsExplorer';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,9 @@ const CodeEditor = () => {
           <div className="p-1">
             <HistoryButton />
           </div>
+        </div>
+        <div>
+          <DocsExplorer />
         </div>
         <div className="flex flex-col w-full h-full">
           <div className="flex w-full h-full">
