@@ -13,7 +13,6 @@ import {
 } from '@/store/slices/dropDownMenusSlice';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
-import { CopyButton } from '@/components/buttons/CopyButton';
 import {
   selectApiUrl,
   selectHeaders,
@@ -57,12 +56,16 @@ const CodeEditor = () => {
     }
   };
 
-  const prettify = async () => {
+  const prettifyQuery = async () => {
     if (!query.trim()) {
       return;
     }
     const prettified = await prettifyGraphql(query);
     dispatch(setQuery(prettified));
+  };
+
+  const clearQuery = async () => {
+    dispatch(setQuery(''));
   };
 
   return (
@@ -86,13 +89,10 @@ const CodeEditor = () => {
                 <RunButton handleClick={runQuery} />
               </div>
               <div className="absolute top-16 right-3">
-                <PrettifyButton handleClick={prettify} />
+                <PrettifyButton handleClick={prettifyQuery} />
               </div>
               <div className="absolute top-28 right-3">
-                <ClearButton />
-              </div>
-              <div className="absolute top-40 right-3">
-                <CopyButton />
+                <ClearButton handleClick={clearQuery} />
               </div>
             </div>
             <CodeOutput />

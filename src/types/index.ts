@@ -31,3 +31,7 @@ export type DropDownMenus = {
   variableIsOpen: boolean;
   headersIsOpen: boolean;
 };
+
+export interface IButtonProps {
+  handleClick: () => void;
+}
