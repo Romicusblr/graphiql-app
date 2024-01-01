@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import { IButtonProps } from '@/types';
 
 const HeadersEditorButton: React.FC<IButtonProps> = ({ handleClick }) => {

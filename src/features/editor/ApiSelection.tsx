@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import { selectApiUrl, setApiUrl } from '@/features/editor/editorSlice';
 import { useAppSelector } from '@/hooks/store';
 import { useDispatch } from 'react-redux';

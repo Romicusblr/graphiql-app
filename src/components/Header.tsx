@@ -1,6 +1,6 @@
 import LanguageToggle from '@/components/LanguageToggle';
 import { NavLink } from 'react-router-dom';
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import { useAppSelector } from '@/hooks/store';
 import { selectUser } from '@/features/auth/authSlice';
 

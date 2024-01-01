@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
 import { useAppDispatch, useAppSelector } from '@/hooks/store';

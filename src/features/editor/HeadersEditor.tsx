@@ -1,5 +1,5 @@
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import { useAppDispatch } from '@/hooks/store';
 import { setHeaders } from '@/features/editor/editorSlice';
 

@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 
 const ButtonSubmit = ({ name }: { name: string }) => {
   const { strings } = useLocalization();

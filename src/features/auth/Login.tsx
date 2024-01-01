@@ -9,7 +9,7 @@ import InputForm from '@/components/UI/InputForm';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserLogin, userLoginSchema } from '@/features/auth/authValidation';
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { LoginUserDTO } from '@/types';
 

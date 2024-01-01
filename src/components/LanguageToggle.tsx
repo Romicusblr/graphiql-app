@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import { Language, REGIONS } from '@/locales/constants';
 
 const LanguageToggle = () => {

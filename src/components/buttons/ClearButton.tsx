@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import clearSvg from '@/icons/clear.svg';
 import { IButtonProps } from '@/types';
 

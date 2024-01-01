@@ -7,7 +7,7 @@ import { UserRegister, userRegisterSchema } from '@/features/auth/authValidation
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { RegisterUserDTO } from '@/types';
 
