@@ -14,7 +14,7 @@ const enStrings = {
   hidePassword: 'Hide password',
   runButton: 'Run query',
   prettifyButton: 'Prettify',
-  clearButton: 'Clear'
+  clearButton: 'Clear',
 } as const;
 
 export default enStrings;

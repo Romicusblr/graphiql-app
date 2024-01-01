@@ -14,7 +14,7 @@ const ruStrings = {
   hidePassword: 'Скрыть пароль',
   runButton: 'Run query',
   prettifyButton: 'Prettify',
-  clearButton: 'Clear'
+  clearButton: 'Clear',
 } as const;
 
 export default ruStrings;

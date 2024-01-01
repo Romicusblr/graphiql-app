@@ -1,42 +1,70 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { RootState } from '../store'
+import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react';
+import { initializeApp } from 'firebase/app';
+import firebaseConfig from '@/config/firebase';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  getAuth,
+  updateProfile,
+} from 'firebase/auth';
+import { RegisterUserDTO, LoginUserDTO, UserAuth } from '@/types';
 
-export interface User {
-  first_name: string
-  last_name: string
-}
-
-export interface UserResponse {
-  user: User
-  token: string
-}
-
-export interface LoginRequest {
-  username: string
-  password: string
-}
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: '/',
-    prepareHeaders: (headers, { getState }) => {
-      // By default, if we have a token in the store, let's use that for authenticated requests
-      const token = (getState() as RootState).auth?.token;
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`)
-      }
-      return headers
-    },
-  }),
-  endpoints: (builder) => ({
-    login: builder.mutation<UserResponse, LoginRequest>({
-      query: (credentials) => ({
-        url: 'login',
-        method: 'POST',
-        body: credentials,
-      }),
+  baseQuery: fakeBaseQuery(),
+  endpoints: (build) => ({
+    login: build.mutation<UserAuth, LoginUserDTO>({
+      queryFn: async (dto) => {
+        try {
+          const { user } = await signInWithEmailAndPassword(
+            auth,
+            dto.email,
+            dto.password
+          );
+          const token = await user.getIdToken();
+          const data = {
+            id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            token,
+          };
+          return { data };
+        } catch (e) {
+          return { error: e };
+        }
+      },
+    }),
+    register: build.mutation<null, RegisterUserDTO>({
+      queryFn: async (dto) => {
+        try {
+          const { user } = await createUserWithEmailAndPassword(
+            auth,
+            dto.email,
+            dto.password
+          );
+          await updateProfile(user, {
+            displayName: dto.name,
+          });
+          return { data: null };
+        } catch (e) {
+          return { error: e };
+        }
+      },
+    }),
+    logout: build.mutation<null, void>({
+      queryFn: async () => {
+        try {
+          await signOut(auth);
+          return { data: null };
+        } catch (e) {
+          return { error: e };
+        }
+      },
     }),
   }),
-})
+});
 
-export const { useLoginMutation } = api
+export const { useLoginMutation, useRegisterMutation, useLogoutMutation } = api;
