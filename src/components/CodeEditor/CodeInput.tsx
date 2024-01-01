@@ -1,8 +1,8 @@
 import { useLocalization } from '@/context/LocalizationContext';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import './CodeEditorStyles.css';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { selectQuery, setQuery } from '@/store/slices/appSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/store';
+import { selectQuery, setQuery } from '@/features/editor/editorSlice';
 
 const CodeInput = () => {
   const { strings } = useLocalization();

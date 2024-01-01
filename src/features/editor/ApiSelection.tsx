@@ -1,6 +1,6 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import { selectApiUrl, setApiUrl } from '@/store/slices/appSlice';
-import { useAppSelector } from '@/hooks/redux';
+import { selectApiUrl, setApiUrl } from '@/features/editor/editorSlice';
+import { useAppSelector } from '@/hooks/store';
 import { useDispatch } from 'react-redux';
 import { ChangeEvent } from 'react';
 

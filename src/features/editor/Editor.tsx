@@ -1,12 +1,12 @@
 import { CodeInput } from '@/components/CodeEditor/CodeInput';
 import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
 import { DocsButton } from '@/components/buttons/DocsButton';
-import { DropDownMenus } from '@/components/DropDownMenus';
-import { VariableEditor } from '@/components/VariableEditor';
+import { DropDownMenus } from '@/features/editor/DropDownMenus';
+import { VariableEditor } from '@/features/editor/VariableEditor';
 import { HistoryButton } from '@/components/buttons/HistoryButton';
-import { ApiSelection } from '@/components/ApiSelection';
-import { useAppSelector } from '@/hooks/redux';
-import { HeadersEditor } from '@/components/HeadersEditor';
+import { ApiSelection } from '@/features/editor/ApiSelection';
+import { useAppSelector } from '@/hooks/store';
+import { HeadersEditor } from '@/features/editor/HeadersEditor';
 import {
   selectHeadersIsOpen,
   selectVariableIsOpen,
@@ -19,7 +19,7 @@ import {
   selectQuery,
   setOutput,
   setQuery,
-} from '@/store/slices/appSlice';
+} from '@/features/editor/editorSlice';
 import { useDispatch } from 'react-redux';
 import { prettifyGraphql, prettifyJson } from '@/utils/prettyfier';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';

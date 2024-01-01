@@ -1,5 +1,5 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import {
   selectHeadersIsOpen,
   selectVariableIsOpen,

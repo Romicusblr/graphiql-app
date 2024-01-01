@@ -1,7 +1,7 @@
 import LanguageToggle from '@/components/LanguageToggle';
 import { NavLink } from 'react-router-dom';
 import { useLocalization } from '@/context/LocalizationContext';
-import { useAppSelector } from '@/hooks/redux';
+import { useAppSelector } from '@/hooks/store';
 import { selectUser } from '@/features/auth/authSlice';
 
 const Header = () => {

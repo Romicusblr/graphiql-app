@@ -1,7 +1,7 @@
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
 import { useLocalization } from '@/context/LocalizationContext';
-import { useAppDispatch } from '@/hooks/redux';
-import { setVariable } from '@/store/slices/appSlice';
+import { useAppDispatch } from '@/hooks/store';
+import { setVariable } from '@/features/editor/editorSlice';
 
 const VariableEditor = () => {
   const { strings } = useLocalization();

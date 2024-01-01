@@ -8,7 +8,7 @@ import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserLogin, userLoginSchema } from '@/utils/schema-validation';
+import { UserLogin, userLoginSchema } from '@/features/auth/authValidation';
 import { useLocalization } from '@/context/LocalizationContext';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { LoginUserDTO } from '@/types';

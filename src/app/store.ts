@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/auth/authSlice';
-import appReducer from '../store/slices/appSlice';
+import appReducer from '../features/editor/editorSlice';
 import { dropDownMenusSliceReducer } from '@/store/slices/dropDownMenusSlice';
 
 const store = configureStore({

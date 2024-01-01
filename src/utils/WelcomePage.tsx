@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/hooks/redux';
+import { useAppSelector } from '@/hooks/store';
 import { selectUser } from '@/features/auth/authSlice';
 import { NavLink } from 'react-router-dom';
 

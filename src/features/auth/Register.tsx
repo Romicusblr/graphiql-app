@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserRegister, userRegisterSchema } from '@/utils/schema-validation';
+import { UserRegister, userRegisterSchema } from '@/features/auth/authValidation';
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
