@@ -2,13 +2,13 @@ import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFoundPage from '@/pages/NotFoundPage';
 import { ErrorBoundary } from '@/components/ErrorBoundary/errorBoundary';
 import { CodeEditor } from '@/pages/CodeEditor';
-import Logout from '@/pages/Logout';
-import Register from '@/pages/Register';
-import Login from '@/pages/Login';
+import Logout from '@/features/auth/Logout';
+import Register from '@/features/auth/Register';
+import Login from '@/features/auth/Login';
 import WelcomePage from '@/pages/WelcomePage';
 import Layout from '@/components/Layout';
 import ErrorPage from '@/pages/ErrorPage';
-import store from '@/store';
+import store from '@/app/store';
 
 const routes = [
   {

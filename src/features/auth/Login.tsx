@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/store/slices/userSlice';
+import { setUser } from '@/features/auth/authSlice';
 import { auth } from '@/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

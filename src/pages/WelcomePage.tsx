@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/redux';
-import { selectUser } from '@/store/slices/userSlice';
+import { selectUser } from '@/features/auth/authSlice';
 import { NavLink } from 'react-router-dom';
 
 function WelcomePage() {

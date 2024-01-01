@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { auth } from '@/api';
-import { removeUser } from '@/store/slices/userSlice';
+import { removeUser } from '@/features/auth/authSlice';
 
 const Logout = () => {
   const dispatch = useDispatch();

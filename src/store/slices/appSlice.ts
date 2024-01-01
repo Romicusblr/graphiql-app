@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { QueryEditor as App } from '@/types';
-import { RootState } from '@/store';
+import { RootState } from '@/app/store';
 
 const initialState: App = {
   apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',

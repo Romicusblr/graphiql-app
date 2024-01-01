@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 import { DropDownMenus } from '@/types';
-import { RootState } from '@/store';
+import { RootState } from '@/app/store';
 
 const initialState: DropDownMenus = {
   variableIsOpen: false,
