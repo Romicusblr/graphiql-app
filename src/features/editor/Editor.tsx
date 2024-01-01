@@ -1,16 +1,11 @@
 import { CodeInput } from '@/components/CodeEditor/CodeInput';
 import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
 import { DocsButton } from '@/components/buttons/DocsButton';
-import { DropDownMenus } from '@/features/editor/DropDownMenus';
 import { VariableEditor } from '@/features/editor/VariableEditor';
 import { HistoryButton } from '@/components/buttons/HistoryButton';
 import { ApiSelection } from '@/features/editor/ApiSelection';
 import { useAppSelector } from '@/hooks/store';
 import { HeadersEditor } from '@/features/editor/HeadersEditor';
-import {
-  selectHeadersIsOpen,
-  selectVariableIsOpen,
-} from '@/store/slices/dropDownMenusSlice';
 import { RunButton } from '@/components/buttons/RunButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
 import {
@@ -23,11 +18,14 @@ import {
 import { useDispatch } from 'react-redux';
 import { prettifyGraphql, prettifyJson } from '@/utils/prettyfier';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';
+import { useState } from 'react';
+import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
+import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
-  const variableIsOpen = useAppSelector(selectVariableIsOpen);
-  const headersIsOpen = useAppSelector(selectHeadersIsOpen);
+  const [variableIsOpen, setVariableIsOpen] = useState(false);
+  const [headersIsOpen, setHeadersIsOpen] = useState(false);
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
@@ -66,6 +64,16 @@ const CodeEditor = () => {
 
   const clearQuery = async () => {
     dispatch(setQuery(''));
+  };
+
+  const openVariablesOrHeaders = (type: 'variables' | 'headers') => () => {
+    if (type === 'variables') {
+      setVariableIsOpen(!variableIsOpen);
+      setHeadersIsOpen(false);
+    } else if (type === 'headers') {
+      setHeadersIsOpen(!headersIsOpen);
+      setVariableIsOpen(false);
+    }
   };
 
   return (
@@ -111,7 +119,14 @@ const CodeEditor = () => {
       </div>
       <div className="flex items-center">
         <div className="w-1/5">
-          <DropDownMenus />
+          <div className="flex rounded-xl ml-14 mt-1 p-1 bg-gray-800">
+            <VariableEditorButton
+              handleClick={openVariablesOrHeaders('variables')}
+            />
+            <HeadersEditorButton
+              handleClick={openVariablesOrHeaders('headers')}
+            />
+          </div>
         </div>
         <div>
           <ApiSelection />

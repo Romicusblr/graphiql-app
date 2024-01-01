@@ -1,22 +1,8 @@
 import { useLocalization } from '@/context/LocalizationContext';
-import { useAppDispatch, useAppSelector } from '@/hooks/store';
-import {
-  selectHeadersIsOpen,
-  selectVariableIsOpen,
-  setHeadersIsOpen,
-  setVariableIsOpen,
-} from '@/store/slices/dropDownMenusSlice';
+import { IButtonProps } from '@/types';
 
-const HeadersEditorButton = () => {
+const HeadersEditorButton: React.FC<IButtonProps> = ({ handleClick }) => {
   const { strings } = useLocalization();
-  const dispatch = useAppDispatch();
-  const headersIsOpen = useAppSelector(selectHeadersIsOpen);
-  const variableIsOpen = useAppSelector(selectVariableIsOpen);
-
-  const handleClick = () => {
-    dispatch(setVariableIsOpen(variableIsOpen && false));
-    dispatch(setHeadersIsOpen(!headersIsOpen));
-  };
 
   return (
     <div

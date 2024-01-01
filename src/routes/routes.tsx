@@ -51,7 +51,7 @@ const routes = [
 }));
 
 function protectedLoader() {
-  const { user } = store.getState();
+  const { auth: user } = store.getState();
 
   if (!user) {
     return redirect('/login');

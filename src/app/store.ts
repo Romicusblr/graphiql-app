@@ -1,18 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../features/auth/authSlice';
-import appReducer from '../features/editor/editorSlice';
-import { dropDownMenusSliceReducer } from '@/store/slices/dropDownMenusSlice';
+import authReducer from '@/features/auth/authSlice';
+import editorReducer from '@/features/editor/editorSlice';
 
 const store = configureStore({
   reducer: {
-    user: userReducer,
-    app: appReducer,
-    dropDownMenus: dropDownMenusSliceReducer,
+    auth: authReducer,
+    editor: editorReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
