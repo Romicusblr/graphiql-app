@@ -21,6 +21,7 @@ import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 import { useState } from 'react';
 import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
 import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
+import { useLazyGqlQuery } from '@/app/services/graphql';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const CodeEditor = () => {
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
+  const [trigger, { data }] = useLazyGqlQuery();
 
   const runQuery = async () => {
     if (!query.trim() || !apiUrl.trim()) {
@@ -36,16 +38,7 @@ const CodeEditor = () => {
     }
 
     try {
-      const res = await fetch(apiUrl, {
-        method: 'POST',
-        body: JSON.stringify({ query }),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          ...headers,
-        },
-      });
-      const data = await res.json();
+      await trigger({ query, headers });
       const output = await prettifyJson(JSON.stringify(data));
       dispatch(setOutput(output));
     } catch (error) {
