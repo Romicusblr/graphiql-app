@@ -1,4 +1,4 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import prettifySvg from '@/icons/prettify.svg';
 import { IButtonProps } from '@/types';
 import React from 'react';

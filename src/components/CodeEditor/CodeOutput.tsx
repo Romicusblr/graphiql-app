@@ -1,6 +1,6 @@
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
-import { useAppSelector } from '@/hooks/redux';
-import { selectOutput } from '@/store/slices/appSlice';
+import { useAppSelector } from '@/hooks/store';
+import { selectOutput } from '@/features/editor/editorSlice';
 
 const CodeOutput = () => {
   const output = useAppSelector(selectOutput);

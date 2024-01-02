@@ -1,10 +1,10 @@
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import runSvg from '@/icons/run.svg';
 import { IButtonProps } from '@/types';
 
 const RunButton: React.FC<IButtonProps> = ({ handleClick }) => {
   const { strings } = useLocalization();
-  
+
   return (
     <button
       title={strings.runButton}
