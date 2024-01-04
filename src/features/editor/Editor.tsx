@@ -12,6 +12,7 @@ import {
   selectApiUrl,
   selectHeaders,
   selectQuery,
+  selectVariables,
   setOutput,
   setQuery,
 } from '@/features/editor/editorSlice';
@@ -30,6 +31,7 @@ const CodeEditor = () => {
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
+  const variables = useAppSelector(selectVariables);
   const [trigger, { data, error }] = useLazyGqlQuery();
 
   const runQuery = async () => {
@@ -37,7 +39,7 @@ const CodeEditor = () => {
       return;
     }
 
-    await trigger({ query, headers });
+    await trigger({ query, headers, variables });
     const output = await prettifyJson(JSON.stringify(error ?? data));
     dispatch(setOutput(output));
   };

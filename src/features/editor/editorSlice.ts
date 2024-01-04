@@ -6,7 +6,7 @@ const initialState: App = {
   apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
   query: '',
   output: '',
-  variable: '',
+  variables: {},
   headers: {},
 };
 
@@ -23,8 +23,8 @@ export const appSlice = createSlice({
     setOutput(state, action) {
       state.output = action.payload;
     },
-    setVariable(state, action) {
-      state.variable = action.payload;
+    setVariables(state, action) {
+      state.variables = action.payload;
     },
     setHeaders(state, action) {
       state.headers = action.payload;
@@ -32,12 +32,12 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setApiUrl, setQuery, setVariable, setHeaders, setOutput } =
+export const { setApiUrl, setQuery, setVariables, setHeaders, setOutput } =
   appSlice.actions;
 export const selectQuery = (state: RootState) => state.editor.query;
 export const selectApiUrl = (state: RootState) => state.editor.apiUrl;
 export const selectOutput = (state: RootState) => state.editor.output;
-export const selectVariable = (state: RootState) => state.editor.variable;
+export const selectVariables = (state: RootState) => state.editor.variables;
 export const selectHeaders = (state: RootState) => state.editor.headers;
 
 export default appSlice.reducer;
