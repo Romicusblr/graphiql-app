@@ -75,7 +75,7 @@ const CodeEditor = () => {
           </div>
         </div>
         {docsIsOpen && (
-          <div>
+          <div className="w-2/5">
             <DocsExplorer />
           </div>
         )}

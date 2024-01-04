@@ -10,7 +10,6 @@ const DocsButton = () => {
   const docsIsOpen = useAppSelector(selectDocsIsOpen);
 
   const handleClick = () => {
-    console.log('click');
     dispatch(setDocsIsOpen(!docsIsOpen));
   };
 

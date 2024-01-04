@@ -36,8 +36,14 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setApiUrl, setQuery, setVariable, setHeaders, setOutput, setSchema } =
-  appSlice.actions;
+export const {
+  setApiUrl,
+  setQuery,
+  setVariable,
+  setHeaders,
+  setOutput,
+  setSchema,
+} = appSlice.actions;
 export const selectQuery = (state: RootState) => state.app.query;
 export const selectApiUrl = (state: RootState) => state.app.apiUrl;
 export const selectOutput = (state: RootState) => state.app.output;
