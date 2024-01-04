@@ -23,7 +23,6 @@ const dynamicBaseQuery: BaseQueryFn<
       },
     };
   }
-  console.log("🚀 ~ file: graphql.ts:32 ~ >= ~ adjustedArgs:", args);
   return fetchBaseQuery({ baseUrl })(args, api, extraOptions);
 };
 

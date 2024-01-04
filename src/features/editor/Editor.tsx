@@ -30,21 +30,16 @@ const CodeEditor = () => {
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
-  const [trigger, { data }] = useLazyGqlQuery();
+  const [trigger, { data, error }] = useLazyGqlQuery();
 
   const runQuery = async () => {
     if (!query.trim() || !apiUrl.trim()) {
       return;
     }
 
-    try {
-      await trigger({ query, headers });
-      const output = await prettifyJson(JSON.stringify(data));
-      dispatch(setOutput(output));
-    } catch (error) {
-      const output = await prettifyJson(JSON.stringify(error));
-      dispatch(setOutput(output));
-    }
+    await trigger({ query, headers });
+    const output = await prettifyJson(JSON.stringify(error ?? data));
+    dispatch(setOutput(output));
   };
 
   const prettifyQuery = async () => {
