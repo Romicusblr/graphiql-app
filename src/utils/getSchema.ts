@@ -4,9 +4,13 @@ import {
   printSchema,
 } from 'graphql/index';
 import { setSchema } from '@/store/slices/appSlice';
-import {Dispatch} from '@reduxjs/toolkit';
+import { Dispatch } from '@reduxjs/toolkit';
 
-export const getSchema = async (apiUrl: string, headers: Record<string, string>, dispatch: Dispatch) => {
+export const getSchema = async (
+  apiUrl: string,
+  headers: Record<string, string>,
+  dispatch: Dispatch
+) => {
   try {
     const res = await fetch(apiUrl, {
       method: 'POST',
