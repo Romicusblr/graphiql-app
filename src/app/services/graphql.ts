@@ -29,20 +29,21 @@ const dynamicBaseQuery: BaseQueryFn<
 export type GqlRequest = {
   query: string;
   headers: Record<string, string | undefined>;
+  variables: Record<string, string | undefined>;
 };
 
 export const api = createApi({
-  reducerPath: "gql-api",
+  reducerPath: 'gql-api',
   baseQuery: dynamicBaseQuery,
   endpoints: (builder) => ({
     gql: builder.query<object, GqlRequest>({
-      query: ({ query, headers }) => ({
-        url: `index`,
+      query: ({ query, headers, variables }) => ({
+        url: '',
         headers,
         method: 'POST',
         // fetchBaseQuery automatically adds `content-type: application/json` to
         // the Headers and calls `JSON.stringify(patch)`
-        body: { query },
+        body: { query, variables },
       }),
     }),
   }),
