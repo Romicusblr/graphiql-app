@@ -13,6 +13,7 @@ const enStrings = {
   showPassword: 'Show password',
   hidePassword: 'Hide password',
   docsTitle: 'Docs',
+  loadingTitle: 'Loading'
 } as const;
 
 export default enStrings;
