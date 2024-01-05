@@ -1,18 +1,8 @@
 import docsSvg from '@/icons/docs.svg';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import {
-  selectDocsIsOpen,
-  setDocsIsOpen,
-} from '@/store/slices/dropDownMenusSlice';
+import React from 'react';
+import {IButtonProps} from '@/types';
 
-const DocsButton = () => {
-  const dispatch = useAppDispatch();
-  const docsIsOpen = useAppSelector(selectDocsIsOpen);
-
-  const handleClick = () => {
-    dispatch(setDocsIsOpen(!docsIsOpen));
-  };
-
+const DocsButton: React.FC<IButtonProps> = ({handleClick}) => {
   return (
     <div
       className="w-10 h-10 flex justify-center items-center cursor-pointer rounded-lg hover:bg-gray-700"

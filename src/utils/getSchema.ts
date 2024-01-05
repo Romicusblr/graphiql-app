@@ -3,8 +3,8 @@ import {
   getIntrospectionQuery,
   printSchema,
 } from 'graphql/index';
-import { setSchema } from '@/store/slices/appSlice';
 import { Dispatch } from '@reduxjs/toolkit';
+import {setSchema} from '@/features/editor/editorSlice';
 
 export const getSchema = async (
   apiUrl: string,

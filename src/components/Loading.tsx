@@ -1,4 +1,4 @@
-import {useLocalization} from '@/context/LocalizationContext';
+import {useLocalization} from '@/hooks/localization';
 
 const Loading = () => {
   const { strings } = useLocalization();

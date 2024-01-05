@@ -1,11 +1,8 @@
 import { useEffect } from 'react';
 import { getSchema } from '@/utils/getSchema';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import {
-  selectApiUrl,
-  selectHeaders,
-  selectSchema,
-} from '@/store/slices/appSlice';
+import {useAppDispatch, useAppSelector} from '@/hooks/store';
+import {selectApiUrl, selectHeaders, selectSchema} from '@/features/editor/editorSlice';
+
 
 const Schema = () => {
   const apiUrl = useAppSelector(selectApiUrl);

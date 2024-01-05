@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { REGIONS, Language, LOCALE_STRINGS } from '@/locales/constants';
 
 export interface LocalizationProviderProps {
@@ -21,10 +21,6 @@ const defaultContextValue: LocalizationContextProps = {
 
 export const LocalizationContext =
   React.createContext<LocalizationContextProps>(defaultContextValue);
-
-export const useLocalization = () => {
-  return useContext(LocalizationContext);
-};
 
 export const LocalizationProvider = ({
   children,

@@ -1,14 +1,14 @@
 import { createBrowserRouter, redirect } from 'react-router-dom';
-import NotFoundPage from '@/pages/NotFoundPage';
+import NotFoundPage from '@/utils/NotFoundPage';
 import { ErrorBoundary } from '@/components/ErrorBoundary/errorBoundary';
-import { CodeEditor } from '@/pages/CodeEditor';
-import Logout from '@/pages/Logout';
-import Register from '@/pages/Register';
-import Login from '@/pages/Login';
-import WelcomePage from '@/pages/WelcomePage';
+import { CodeEditor } from '@/features/editor/Editor';
+import Logout from '@/features/auth/Logout';
+import Register from '@/features/auth/Register';
+import Login from '@/features/auth/Login';
+import WelcomePage from '@/utils/WelcomePage';
 import Layout from '@/components/Layout';
-import ErrorPage from '@/pages/ErrorPage';
-import store from '@/store';
+import ErrorPage from '@/utils/ErrorPage';
+import store from '@/app/store';
 
 const routes = [
   {
@@ -51,7 +51,7 @@ const routes = [
 }));
 
 function protectedLoader() {
-  const { user } = store.getState();
+  const { auth: user } = store.getState();
 
   if (!user) {
     return redirect('/login');

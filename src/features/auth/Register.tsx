@@ -1,18 +1,19 @@
-import { auth } from '@/api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserRegister, userRegisterSchema } from '@/utils/schema-validation';
+import { UserRegister, userRegisterSchema } from '@/features/auth/auth.schema';
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
 import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
-import { useLocalization } from '@/context/LocalizationContext';
+import { useLocalization } from '@/hooks/localization';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { RegisterUserDTO } from '@/types';
+import { useRegisterMutation } from '@/app/services/auth';
 
 const Register = () => {
   const { strings } = useLocalization();
+  const [registerUser] = useRegisterMutation();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const {
@@ -22,7 +23,7 @@ const Register = () => {
   } = useForm({ resolver: yupResolver(userRegisterSchema) });
 
   const onSubmit: SubmitHandler<UserRegister> = async (data) => {
-    await auth.register(data as RegisterUserDTO);
+    await registerUser(data as RegisterUserDTO).unwrap();
     navigate('/');
   };
 

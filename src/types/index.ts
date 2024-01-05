@@ -13,17 +13,11 @@ export type RegisterUserDTO = {
 
 export type LoginUserDTO = Pick<RegisterUserDTO, 'email' | 'password'>;
 
-export interface AuthApiInterface {
-  register(user: RegisterUserDTO): Promise<UserAuth>;
-  login(dto: LoginUserDTO): Promise<UserAuth>;
-  logout(): Promise<void>;
-}
-
 export type QueryEditor = {
   apiUrl: string;
   query: string;
   output: string;
-  variable: string;
+  variables: Record<string, string>;
   headers: Record<string, string>;
   schema: string;
 };
@@ -33,3 +27,7 @@ export type DropDownMenus = {
   headersIsOpen: boolean;
   docsIsOpen: boolean;
 };
+
+export interface IButtonProps {
+  handleClick: () => void;
+}

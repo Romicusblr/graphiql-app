@@ -13,7 +13,10 @@ const ruStrings = {
   showPassword: 'Показать пароль',
   hidePassword: 'Скрыть пароль',
   docsTitle: 'Документация',
-  loadingTitle: 'Загрузка'
+  loadingTitle: 'Загрузка',
+  runButton: 'Run query',
+  prettifyButton: 'Prettify',
+  clearButton: 'Clear',
 } as const;
 
 export default ruStrings;

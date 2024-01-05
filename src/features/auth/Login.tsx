@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setUser } from '@/store/slices/userSlice';
-import { auth } from '@/api';
+import { setUser } from '@/features/auth/authSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ButtonSubmit from '@/components/UI/ButtonSubmit';
@@ -8,13 +7,15 @@ import LabelForm from '@/components/UI/LabelForm';
 import InputForm from '@/components/UI/InputForm';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserLogin, userLoginSchema } from '@/utils/schema-validation';
-import { useLocalization } from '@/context/LocalizationContext';
+import { UserLogin, userLoginSchema } from '@/features/auth/auth.schema';
+import { useLocalization } from '@/hooks/localization';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { LoginUserDTO } from '@/types';
+import { useLoginMutation } from '@/app/services/auth';
 
 const Login = () => {
   const { strings } = useLocalization();
+  const [login] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
@@ -25,7 +26,7 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(userLoginSchema) });
 
   const onSubmit: SubmitHandler<UserLogin> = async (data) => {
-    const user = await auth.login(data as LoginUserDTO);
+    const user = await login(data as LoginUserDTO).unwrap();
     dispatch(setUser(user));
     navigate('/app');
   };

@@ -1,14 +1,14 @@
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
-import { useLocalization } from '@/context/LocalizationContext';
-import { useAppDispatch } from '@/hooks/redux';
-import { setVariable } from '@/store/slices/appSlice';
+import { useLocalization } from '@/hooks/localization';
+import { useAppDispatch } from '@/hooks/store';
+import { setVariables } from '@/features/editor/editorSlice';
 
 const VariableEditor = () => {
   const { strings } = useLocalization();
   const dispatch = useAppDispatch();
 
   const handleChange = (newValue: string) => {
-    dispatch(setVariable(newValue));
+    dispatch(setVariables(newValue));
   };
 
   const CodeMirrorProps: ReactCodeMirrorProps = {
