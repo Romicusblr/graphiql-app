@@ -12,6 +12,8 @@ const ruStrings = {
   apiSelectionPlaceholder: 'введите api',
   showPassword: 'Показать пароль',
   hidePassword: 'Скрыть пароль',
+  docsTitle: 'Документация',
+  loadingTitle: 'Загрузка',
   runButton: 'Run query',
   prettifyButton: 'Prettify',
   clearButton: 'Clear',

@@ -12,6 +12,8 @@ const enStrings = {
   apiSelectionPlaceholder: 'enter api',
   showPassword: 'Show password',
   hidePassword: 'Hide password',
+  docsTitle: 'Docs',
+  loadingTitle: 'Loading',
   runButton: 'Run query',
   prettifyButton: 'Prettify',
   clearButton: 'Clear',

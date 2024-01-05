@@ -11,7 +11,7 @@ const LinkGitHub: FC<PropsType> = ({ link, name }) => {
       href={link}
       rel="noreferrer"
       target="_blank"
-      className="flex items-center hover:text-blue-800 transition duration-200"
+      className="flex items-center text-gray-400 hover:text-gray-600 transition duration-200"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

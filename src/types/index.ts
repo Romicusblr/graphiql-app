@@ -19,11 +19,13 @@ export type QueryEditor = {
   output: string;
   variables: Record<string, string>;
   headers: Record<string, string>;
+  schema: string;
 };
 
 export type DropDownMenus = {
   variableIsOpen: boolean;
   headersIsOpen: boolean;
+  docsIsOpen: boolean;
 };
 
 export interface IButtonProps {

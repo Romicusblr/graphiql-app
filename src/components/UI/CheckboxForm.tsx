@@ -11,7 +11,7 @@ const CheckboxForm: FC<PropType> = ({ checked, onChange }) => {
   return (
     <label
       htmlFor="show-password"
-      className="block mt-2 text-xs font-bold text-gray-700 cursor-pointer"
+      className="block mt-2 text-xs font-bold text-gray-400 cursor-pointer"
     >
       <input
         type="checkbox"
