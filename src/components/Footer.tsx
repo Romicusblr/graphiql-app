@@ -20,13 +20,13 @@ const Footer = () => {
           />
         </li>
       </ul>
-      <div className="font-bold">© 2023</div>
+      <div className="font-extrabold text-base">2023</div>
       <div>
         <a href="https://rs.school/react/" rel="noreferrer" target="_blank">
           <img
             src="/images/logo-rss.svg"
             alt="logo RS School"
-            className="w-24 hover: text-blue-700"
+            className="w-24"
           />
         </a>
       </div>
