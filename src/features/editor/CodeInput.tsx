@@ -1,6 +1,5 @@
 import { useLocalization } from '@/hooks/localization';
 import CodeMirror, { ReactCodeMirrorProps } from '@uiw/react-codemirror';
-import './CodeEditorStyles.css';
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import { selectQuery, setQuery } from '@/features/editor/editorSlice';
 

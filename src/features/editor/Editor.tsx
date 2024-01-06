@@ -1,3 +1,4 @@
+import './styles.css';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/hooks/store';
 import {
@@ -9,11 +10,11 @@ import {
 } from '@/features/editor/editorSlice';
 import { useLazyGqlQuery } from '@/app/services/graphql';
 import { prettifyGraphql } from '@/utils/prettyfier';
-import { CodeInput } from '@/components/CodeEditor/CodeInput';
+import { CodeInput } from '@/features/editor/CodeInput';
 import { RunButton } from '@/components/buttons/RunButton';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
-import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
+import { CodeOutput } from '@/features/editor/CodeOutput';
 import { EditorSideBar } from './EditorSideBar';
 import { EditorBottomBar } from './EditorBottomBar';
 
