@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import Loading from '@/components/Loading';
 import { useLocalization } from '@/hooks/localization';
 
-const Schema = lazy(() => import('@/components/Schema'));
+const Schema = lazy(() => import('@/features/editor/Schema'));
 
 const DocsExplorer = () => {
   const { strings } = useLocalization();
