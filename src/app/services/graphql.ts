@@ -6,6 +6,7 @@ import type {
 } from '@reduxjs/toolkit/query/react';
 import { selectApiUrl } from '@/features/editor/editorSlice';
 import type { RootState } from '../store';
+import {getIntrospectionQuery} from 'graphql/index';
 
 const dynamicBaseQuery: BaseQueryFn<
   string | FetchArgs,
@@ -46,7 +47,16 @@ export const api = createApi({
         body: { query, variables },
       }),
     }),
+    getSchema: builder.query({
+      query: () => ({
+        url: '',
+        method: 'POST',
+        body: {
+          query: getIntrospectionQuery()
+        },
+      }),
+    }),
   }),
 });
 
-export const { useLazyGqlQuery } = api;
+export const { useLazyGqlQuery, useGetSchemaQuery } = api;

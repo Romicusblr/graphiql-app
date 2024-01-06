@@ -1,24 +1,21 @@
-import { useEffect } from 'react';
-import { getSchema } from '@/utils/getSchema';
-import {useAppDispatch, useAppSelector} from '@/hooks/store';
-import {selectApiUrl, selectHeaders, selectSchema} from '@/features/editor/editorSlice';
-
+import {useGetSchemaQuery} from '@/app/services/graphql';
+import {buildClientSchema, printSchema} from 'graphql/index';
 
 const Schema = () => {
-  const apiUrl = useAppSelector(selectApiUrl);
-  const headers = useAppSelector(selectHeaders);
-  const dispatch = useAppDispatch();
-  const schema = useAppSelector(selectSchema);
+  const { data } = useGetSchemaQuery(undefined);
+  let printedSchema;
 
-  useEffect(() => {
-    getSchema(apiUrl, headers, dispatch);
-  });
+  if (data) {
+    const result = data.data;
+    const schema = buildClientSchema(result);
+    printedSchema = printSchema(schema);
+  }
 
   return (
     <>
       <textarea
         name="docs"
-        value={schema}
+        value={printedSchema}
         className="text-base h-5/6 w-full resize-none outline-none bg-gray-800 text-gray-400 p-4"
         readOnly
       />

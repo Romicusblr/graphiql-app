@@ -1,27 +1,21 @@
-import { useAppSelector } from '@/hooks/store';
-import {
-  selectApiUrl,
-  selectHeaders,
-  selectQuery,
-  selectVariables,
-  setQuery,
-} from '@/features/editor/editorSlice';
-import { prettifyGraphql } from '@/utils/prettyfier';
-import { useState } from 'react';
-import { useLazyGqlQuery } from '@/app/services/graphql';
-import { useDispatch } from 'react-redux';
-import { DocsExplorer } from '@/components/DocsExplorer';
-import { DocsButton } from '@/components/buttons/DocsButton';
-import { CodeInput } from '@/components/CodeEditor/CodeInput';
-import { RunButton } from '@/components/buttons/RunButton';
-import { PrettifyButton } from '@/components/buttons/PrettifyButton';
-import { ClearButton } from '@/components/buttons/ClearButton';
-import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
-import { VariableEditor } from '@/features/editor/VariableEditor';
-import { HeadersEditor } from '@/features/editor/HeadersEditor';
-import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
-import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
-import { ApiSelection } from '@/features/editor/ApiSelection';
+import {useDispatch} from 'react-redux';
+import {useState} from 'react';
+import {useAppSelector} from '@/hooks/store';
+import {selectApiUrl, selectHeaders, selectQuery, selectVariables, setQuery} from '@/features/editor/editorSlice';
+import {useLazyGqlQuery} from '@/app/services/graphql';
+import {prettifyGraphql} from '@/utils/prettyfier';
+import {DocsButton} from '@/components/buttons/DocsButton';
+import {DocsExplorer} from '@/components/DocsExplorer';
+import {CodeInput} from '@/components/CodeEditor/CodeInput';
+import {RunButton} from '@/components/buttons/RunButton';
+import {PrettifyButton} from '@/components/buttons/PrettifyButton';
+import {ClearButton} from '@/components/buttons/ClearButton';
+import {CodeOutput} from '@/components/CodeEditor/CodeOutput';
+import {VariableEditor} from '@/features/editor/VariableEditor';
+import {HeadersEditor} from '@/features/editor/HeadersEditor';
+import {VariableEditorButton} from '@/components/buttons/VariableEditorButton';
+import {HeadersEditorButton} from '@/components/buttons/HeadersEditorButton';
+import {ApiSelection} from '@/features/editor/ApiSelection';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
