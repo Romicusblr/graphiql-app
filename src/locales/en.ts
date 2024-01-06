@@ -7,7 +7,7 @@ const enStrings = {
   passwordTitle: 'Password',
   nameTitle: 'Name',
   codeMirrorPlaceholder: '# Welcome to CodeEditor',
-  variableTitle: 'Variable',
+  variableTitle: 'Variables',
   headersTitle: 'Headers',
   apiSelectionPlaceholder: 'enter api',
   showPassword: 'Show password',

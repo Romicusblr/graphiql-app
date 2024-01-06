@@ -6,7 +6,7 @@ const VariableEditorButton: React.FC<IButtonProps> = ({ handleClick }) => {
 
   return (
     <div
-      className="flex justify-center items-center w-2/4 h-10 cursor-pointer rounded-lg text-gray-400 hover:bg-gray-700"
+      className="flex justify-center items-center cursor-pointer rounded-lg text-gray-400 hover:bg-gray-700 bg-gray-800 w-40 p-2"
       onClick={handleClick}
     >
       {strings.variableTitle}

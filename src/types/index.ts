@@ -17,7 +17,7 @@ export type QueryEditor = {
   apiUrl: string;
   query: string;
   output: string;
-  variables: Record<string, string>;
+  variables: string;
   headers: Record<string, string>;
   schema: string;
 };

@@ -1,27 +1,24 @@
-import {useDispatch} from 'react-redux';
-import {useState} from 'react';
-import {useAppSelector} from '@/hooks/store';
-import {selectApiUrl, selectHeaders, selectQuery, selectVariables, setQuery} from '@/features/editor/editorSlice';
-import {useLazyGqlQuery} from '@/app/services/graphql';
-import {prettifyGraphql} from '@/utils/prettyfier';
-import {DocsButton} from '@/components/buttons/DocsButton';
-import {DocsExplorer} from '@/components/DocsExplorer';
-import {CodeInput} from '@/components/CodeEditor/CodeInput';
-import {RunButton} from '@/components/buttons/RunButton';
-import {PrettifyButton} from '@/components/buttons/PrettifyButton';
-import {ClearButton} from '@/components/buttons/ClearButton';
-import {CodeOutput} from '@/components/CodeEditor/CodeOutput';
-import {VariableEditor} from '@/features/editor/VariableEditor';
-import {HeadersEditor} from '@/features/editor/HeadersEditor';
-import {VariableEditorButton} from '@/components/buttons/VariableEditorButton';
-import {HeadersEditorButton} from '@/components/buttons/HeadersEditorButton';
-import {ApiSelection} from '@/features/editor/ApiSelection';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/store';
+import {
+  selectApiUrl,
+  selectHeaders,
+  selectQuery,
+  selectVariables,
+  setQuery,
+} from '@/features/editor/editorSlice';
+import { useLazyGqlQuery } from '@/app/services/graphql';
+import { prettifyGraphql } from '@/utils/prettyfier';
+import { CodeInput } from '@/components/CodeEditor/CodeInput';
+import { RunButton } from '@/components/buttons/RunButton';
+import { PrettifyButton } from '@/components/buttons/PrettifyButton';
+import { ClearButton } from '@/components/buttons/ClearButton';
+import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
+import { EditorSideBar } from './EditorSideBar';
+import { EditorBottomBar } from './EditorBottomBar';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
-  const [variableIsOpen, setVariableIsOpen] = useState(false);
-  const [headersIsOpen, setHeadersIsOpen] = useState(false);
-  const [docsIsOpen, setDocsIsOpen] = useState(false);
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
@@ -48,16 +45,6 @@ const CodeEditor = () => {
     dispatch(setQuery(''));
   };
 
-  const openVariablesOrHeaders = (type: 'variables' | 'headers') => () => {
-    if (type === 'variables') {
-      setVariableIsOpen(!variableIsOpen);
-      setHeadersIsOpen(false);
-    } else if (type === 'headers') {
-      setHeadersIsOpen(!headersIsOpen);
-      setVariableIsOpen(false);
-    }
-  };
-
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
@@ -80,31 +67,7 @@ const CodeEditor = () => {
             </div>
             <CodeOutput />
           </div>
-          {variableIsOpen && (
-            <div className="h-2/4">
-              <VariableEditor />
-            </div>
-          )}
-          {headersIsOpen && (
-            <div className="h-2/4">
-              <HeadersEditor />
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="flex items-center">
-        <div className="w-1/5">
-          <div className="flex rounded-xl ml-14 mt-1 p-1 bg-gray-800">
-            <VariableEditorButton
-              handleClick={openVariablesOrHeaders('variables')}
-            />
-            <HeadersEditorButton
-              handleClick={openVariablesOrHeaders('headers')}
-            />
-          </div>
-        </div>
-        <div>
-          <ApiSelection />
+          <EditorBottomBar />
         </div>
       </div>
     </div>
