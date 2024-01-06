@@ -58,23 +58,10 @@ const CodeEditor = () => {
     }
   };
 
-  const openDocs = () => {
-    setDocsIsOpen(!docsIsOpen);
-  };
-
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
-        <div className="flex flex-col items-center">
-          <div className="pt-1 mb-1">
-            <DocsButton handleClick={openDocs} />
-          </div>
-        </div>
-        {docsIsOpen && (
-          <div className="w-2/5">
-            <DocsExplorer />
-          </div>
-        )}
+        <EditorSideBar />
         <div className="flex flex-col w-full h-full">
           <div className="flex w-full h-full">
             <div className="relative resize-none rounded-xl outline-none border-4 border-gray-600 bg-gray-800 text-gray-400 p-2 overflow-auto w-2/4">
