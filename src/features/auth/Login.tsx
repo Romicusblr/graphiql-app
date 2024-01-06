@@ -51,7 +51,11 @@ const Login = () => {
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
-        <InputForm type="text" name="password" register={register} />
+        <InputForm
+          type={checked ? 'text' : 'password'}
+          name="password"
+          register={register}
+        />
         <CheckboxForm checked={checked} onChange={handleChange} />
         {errors.password && (
           <p className="mt-2 p-1 text-white bg-red-800">

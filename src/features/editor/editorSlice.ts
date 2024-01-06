@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { QueryEditor as App } from '@/types';
 import { RootState } from '@/app/store';
+import { api } from '@/app/services/graphql';
+import { prettifyJson } from '@/utils/prettyfier';
 
 const initialState: App = {
   apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
@@ -34,10 +36,27 @@ export const appSlice = createSlice({
       state.schema = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addMatcher(api.endpoints.gql.matchFulfilled, (state, { payload }) => {
+        state.output = prettifyJson(payload);
+      })
+      .addMatcher(api.endpoints.gql.matchRejected, (state, { payload }) => {
+        if (payload?.data) {
+          state.output = prettifyJson(payload?.data);
+        }
+      });
+  },
 });
 
-export const { setApiUrl, setQuery, setVariables, setHeaders, setOutput, setSchema } =
-  appSlice.actions;
+export const {
+  setApiUrl,
+  setQuery,
+  setVariables,
+  setHeaders,
+  setOutput,
+  setSchema,
+} = appSlice.actions;
 
 export const selectQuery = (state: RootState) => state.editor.query;
 export const selectApiUrl = (state: RootState) => state.editor.apiUrl;
