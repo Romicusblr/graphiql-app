@@ -8,7 +8,7 @@ const initialState: App = {
   apiUrl: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
   query: '',
   output: '',
-  variables: {},
+  variables: '',
   headers: {},
   schema: '',
 };

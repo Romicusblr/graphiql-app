@@ -6,7 +6,7 @@ import type {
 } from '@reduxjs/toolkit/query/react';
 import { selectApiUrl } from '@/features/editor/editorSlice';
 import type { RootState } from '../store';
-import {getIntrospectionQuery} from 'graphql/index';
+import { getIntrospectionQuery } from 'graphql/index';
 
 const dynamicBaseQuery: BaseQueryFn<
   string | FetchArgs,
@@ -30,7 +30,7 @@ const dynamicBaseQuery: BaseQueryFn<
 export type GqlRequest = {
   query: string;
   headers: Record<string, string | undefined>;
-  variables: Record<string, string | undefined>;
+  variables: string;
 };
 
 export const api = createApi({
@@ -52,7 +52,7 @@ export const api = createApi({
         url: '',
         method: 'POST',
         body: {
-          query: getIntrospectionQuery()
+          query: getIntrospectionQuery(),
         },
       }),
     }),
