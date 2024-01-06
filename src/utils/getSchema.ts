@@ -4,7 +4,7 @@ import {
   printSchema,
 } from 'graphql/index';
 import { Dispatch } from '@reduxjs/toolkit';
-import {setSchema} from '@/features/editor/editorSlice';
+import { setSchema } from '@/features/editor/editorSlice';
 
 export const getSchema = async (
   apiUrl: string,

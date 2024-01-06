@@ -22,12 +22,6 @@ export type QueryEditor = {
   schema: string;
 };
 
-export type DropDownMenus = {
-  variableIsOpen: boolean;
-  headersIsOpen: boolean;
-  docsIsOpen: boolean;
-};
-
 export interface IButtonProps {
   handleClick: () => void;
 }
