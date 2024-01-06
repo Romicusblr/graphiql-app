@@ -12,7 +12,6 @@ import {useState} from 'react';
 import {useLazyGqlQuery} from '@/app/services/graphql';
 import {useDispatch} from 'react-redux';
 import {DocsExplorer} from '@/components/DocsExplorer';
-import {HistoryButton} from '@/components/buttons/HistoryButton';
 import {DocsButton} from '@/components/buttons/DocsButton';
 import {CodeInput} from '@/components/CodeEditor/CodeInput';
 import {RunButton} from '@/components/buttons/RunButton';
@@ -78,9 +77,6 @@ const CodeEditor = () => {
         <div className="flex flex-col items-center">
           <div className="pt-1 mb-1">
             <DocsButton handleClick={openDocs}/>
-          </div>
-          <div className="p-1">
-            <HistoryButton />
           </div>
         </div>
         {docsIsOpen && (
