@@ -20,11 +20,7 @@ const CodeInput = () => {
     onChange: handleChange,
   };
 
-  return (
-    <div className="w-5/6 text-base">
-      <CodeMirror {...codeMirrorProps} />
-    </div>
-  );
+  return <CodeMirror {...codeMirrorProps} />;
 };
 
 export { CodeInput };
