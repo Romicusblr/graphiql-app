@@ -1,28 +1,27 @@
-import {useAppSelector} from '@/hooks/store';
+import { useAppSelector } from '@/hooks/store';
 import {
   selectApiUrl,
   selectHeaders,
   selectQuery,
   selectVariables,
-  setOutput,
-  setQuery
+  setQuery,
 } from '@/features/editor/editorSlice';
-import {prettifyGraphql, prettifyJson} from '@/utils/prettyfier';
-import {useState} from 'react';
-import {useLazyGqlQuery} from '@/app/services/graphql';
-import {useDispatch} from 'react-redux';
-import {DocsExplorer} from '@/components/DocsExplorer';
-import {DocsButton} from '@/components/buttons/DocsButton';
-import {CodeInput} from '@/components/CodeEditor/CodeInput';
-import {RunButton} from '@/components/buttons/RunButton';
-import {PrettifyButton} from '@/components/buttons/PrettifyButton';
-import {ClearButton} from '@/components/buttons/ClearButton';
-import {CodeOutput} from '@/components/CodeEditor/CodeOutput';
-import {VariableEditor} from '@/features/editor/VariableEditor';
-import {HeadersEditor} from '@/features/editor/HeadersEditor';
-import {VariableEditorButton} from '@/components/buttons/VariableEditorButton';
-import {HeadersEditorButton} from '@/components/buttons/HeadersEditorButton';
-import {ApiSelection} from '@/features/editor/ApiSelection';
+import { prettifyGraphql } from '@/utils/prettyfier';
+import { useState } from 'react';
+import { useLazyGqlQuery } from '@/app/services/graphql';
+import { useDispatch } from 'react-redux';
+import { DocsExplorer } from '@/components/DocsExplorer';
+import { DocsButton } from '@/components/buttons/DocsButton';
+import { CodeInput } from '@/components/CodeEditor/CodeInput';
+import { RunButton } from '@/components/buttons/RunButton';
+import { PrettifyButton } from '@/components/buttons/PrettifyButton';
+import { ClearButton } from '@/components/buttons/ClearButton';
+import { CodeOutput } from '@/components/CodeEditor/CodeOutput';
+import { VariableEditor } from '@/features/editor/VariableEditor';
+import { HeadersEditor } from '@/features/editor/HeadersEditor';
+import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
+import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
+import { ApiSelection } from '@/features/editor/ApiSelection';
 
 const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -33,7 +32,7 @@ const CodeEditor = () => {
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
   const variables = useAppSelector(selectVariables);
-  const [trigger, { data, error }] = useLazyGqlQuery();
+  const [trigger] = useLazyGqlQuery();
 
   const runQuery = async () => {
     if (!query.trim() || !apiUrl.trim()) {
@@ -41,8 +40,6 @@ const CodeEditor = () => {
     }
 
     await trigger({ query, headers, variables });
-    const output = await prettifyJson(JSON.stringify(error ?? data));
-    dispatch(setOutput(output));
   };
 
   const prettifyQuery = async () => {
@@ -68,15 +65,15 @@ const CodeEditor = () => {
   };
 
   const openDocs = () => {
-    setDocsIsOpen(!docsIsOpen)
-  }
+    setDocsIsOpen(!docsIsOpen);
+  };
 
   return (
     <div className="flex w-full flex-col grow absolute h-full p-2 bg-gray-600">
       <div className="flex w-full h-full">
         <div className="flex flex-col items-center">
           <div className="pt-1 mb-1">
-            <DocsButton handleClick={openDocs}/>
+            <DocsButton handleClick={openDocs} />
           </div>
         </div>
         {docsIsOpen && (
