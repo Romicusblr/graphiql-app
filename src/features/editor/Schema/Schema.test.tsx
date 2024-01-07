@@ -14,7 +14,7 @@ describe('Schema Component', () => {
     mockUseGetSchemaQuery.mockReturnValue({ data: mockData });
 
     render(<Schema />);
-    
+
     const textbox = screen.getByRole<HTMLInputElement>('textbox');
     expect(textbox).toBeInTheDocument();
     expect(textbox).toHaveValue(mockData);
@@ -24,7 +24,7 @@ describe('Schema Component', () => {
     mockUseGetSchemaQuery.mockReturnValue({ data: undefined });
 
     render(<Schema />);
-    
+
     expect(screen.queryByRole('textbox', { name: 'docs' })).toBeNull();
   });
 });

@@ -42,7 +42,9 @@ describe('Login Component', () => {
   });
 
   it('submits the form and navigates on successful login', async () => {
-    mockLogin.mockReturnValueOnce({ unwrap: () => Promise.resolve('mockUser') });
+    mockLogin.mockReturnValueOnce({
+      unwrap: () => Promise.resolve('mockUser'),
+    });
 
     render(<Login />);
     fireEvent.change(screen.getByLabelText(/Email/i), {

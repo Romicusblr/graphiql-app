@@ -40,7 +40,9 @@ describe('Login Component', () => {
   });
 
   it('submits the form and navigate', async () => {
-    mockRegister.mockReturnValueOnce({ unwrap: () => Promise.resolve('mockUser') });
+    mockRegister.mockReturnValueOnce({
+      unwrap: () => Promise.resolve('mockUser'),
+    });
 
     render(<Register />);
     fireEvent.change(screen.getByLabelText(/name/i), {
