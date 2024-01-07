@@ -1,7 +1,7 @@
 import LinkGitHub from '../UI/LinkGitHub';
 
 const Footer = () => {
-    const year = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="flex justify-between items-center shrink-0 bg-gray-800 px-8 py-1 text-gray-400">
@@ -22,7 +22,7 @@ const Footer = () => {
           />
         </li>
       </ul>
-      <div className="font-extrabold text-base">{year}</div>
+      <div className="font-extrabold text-base">{year.toString()}</div>
       <div>
         <a href="@/components/Footer/Footer" rel="noreferrer" target="_blank">
           <img
