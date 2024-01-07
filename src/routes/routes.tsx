@@ -1,7 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFoundPage from '@/components/NotFoundPage/NotFoundPage';
 import { ErrorBoundary } from '@/components/ErrorBoundary/errorBoundary';
-import { CodeEditor } from '@/features/editor/Editor';
+import { CodeEditor } from '@/features/editor/Editor/Editor';
 import Logout from '@/features/auth/Logout';
 import Register from '@/features/auth/Register';
 import Login from '@/features/auth/Login';

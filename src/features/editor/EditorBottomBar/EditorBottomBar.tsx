@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { VariableEditor } from '@/features/editor/VariableEditor';
-import { HeadersEditor } from '@/features/editor/HeadersEditor';
+import { VariableEditor } from '@/features/editor/CodeMirror/VariableEditor';
+import { HeadersEditor } from '@/features/editor/CodeMirror/HeadersEditor';
 import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
 import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
 import { ApiSelection } from '@/features/editor/ApiSelection';
