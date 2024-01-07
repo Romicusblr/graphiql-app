@@ -40,10 +40,10 @@ describe('Login Component', () => {
   });
 
   it('submits the form and navigate', async () => {
-    // Arrange: Mock the login function to resolve successfully
-    mockRegister.mockReturnValueOnce({ unwrap: () => Promise.resolve('mockUser') });
+    mockRegister.mockReturnValueOnce({
+      unwrap: () => Promise.resolve('mockUser'),
+    });
 
-    // Act: Render the component and fill in the form
     render(<Register />);
     fireEvent.change(screen.getByLabelText(/name/i), {
       target: { value: 'Test User' },
@@ -52,16 +52,15 @@ describe('Login Component', () => {
       target: { value: 'test@example.com' },
     });
     fireEvent.change(screen.getByLabelText(/password/i), {
-      target: { value: 'password123' },
+      target: { value: 'password123!' },
     });
     fireEvent.click(screen.getByRole('button'));
 
-    // Assert: Check if the login function and navigation were called correctly
     await waitFor(() => {
       expect(mockRegister).toHaveBeenCalledWith({
         name: 'Test User',
         email: 'test@example.com',
-        password: 'password123',
+        password: 'password123!',
       });
       expect(mockNavigate).toHaveBeenCalledWith('/');
     });

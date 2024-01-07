@@ -1,6 +1,5 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
-// import * as reduxHooks from '@/hooks/store';
 import { useLazyGqlQuery } from '@/app/services/graphql';
 import * as prettyfier from '@/utils/prettyfier';
 import { CodeEditor } from './Editor';
@@ -112,9 +111,7 @@ describe('CodeEditor Component', () => {
   it('calls prettify on PrettifyButton click if query defined', async () => {
     mockSelectQuery.mockReturnValueOnce('test');
     render(<CodeEditor />);
-    // Assume button for prettify has testId 'prettify-button'
     fireEvent.click(screen.getByTestId('prettify-button'));
-    // because handler is async
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalled();
     });
@@ -122,9 +119,7 @@ describe('CodeEditor Component', () => {
 
   it('do not calls prettify on PrettifyButton click if query not defined', async () => {
     render(<CodeEditor />);
-    // Assume button for prettify has testId 'prettify-button'
     fireEvent.click(screen.getByTestId('prettify-button'));
-    // because handler is async
     await waitFor(() => {
       expect(mockDispatch).not.toHaveBeenCalled();
     });
@@ -132,7 +127,6 @@ describe('CodeEditor Component', () => {
 
   it('calls clearQuery on ClearButton click', () => {
     render(<CodeEditor />);
-    // Assume button for clear has testId 'clear-button'
     fireEvent.click(screen.getByTestId('clear-button'));
     expect(mockDispatch).toHaveBeenCalled();
   });

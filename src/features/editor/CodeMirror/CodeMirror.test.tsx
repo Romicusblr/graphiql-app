@@ -5,7 +5,6 @@ import { CodeOutput } from './CodeOutput';
 import { VariableEditor } from './VariableEditor';
 import { HeadersEditor } from './HeadersEditor';
 
-// Mock types
 type DispatchType = typeof reduxHooks.useAppDispatch extends () => infer D
   ? D
   : never;
@@ -22,7 +21,6 @@ const textareaComponents = [
 ];
 
 describe.each(textareaComponents)('CodeMirror Component', (Component) => {
-  // Mock Redux hooks
   const mockDispatch = jest.fn();
   const mockSelector = jest.fn();
 

@@ -2,7 +2,9 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { EditorBottomBar } from './EditorBottomBar';
 
 jest.mock('@/features/editor/CodeMirror/VariableEditor', () => ({
-  VariableEditor: () => <div data-testid="variable-editor">Variable Editor</div>,
+  VariableEditor: () => (
+    <div data-testid="variable-editor">Variable Editor</div>
+  ),
 }));
 
 jest.mock('@/features/editor/CodeMirror/HeadersEditor', () => ({
@@ -11,13 +13,17 @@ jest.mock('@/features/editor/CodeMirror/HeadersEditor', () => ({
 
 jest.mock('@/components/buttons/VariableEditorButton', () => ({
   VariableEditorButton: ({ handleClick }: { handleClick: () => void }) => (
-    <button onClick={handleClick} data-testid="variable-editor-button">Variables</button>
+    <button onClick={handleClick} data-testid="variable-editor-button">
+      Variables
+    </button>
   ),
 }));
 
 jest.mock('@/components/buttons/HeadersEditorButton', () => ({
   HeadersEditorButton: ({ handleClick }: { handleClick: () => void }) => (
-    <button onClick={handleClick} data-testid="headers-editor-button">Headers</button>
+    <button onClick={handleClick} data-testid="headers-editor-button">
+      Headers
+    </button>
   ),
 }));
 
@@ -29,16 +35,13 @@ describe('EditorBottomBar Component', () => {
   it('toggles VariableEditor and HeadersEditor on button clicks', () => {
     render(<EditorBottomBar />);
 
-    // Initially, editors should not be visible
     expect(screen.queryByTestId('variable-editor')).toBeNull();
     expect(screen.queryByTestId('headers-editor')).toBeNull();
 
-    // Click to open VariableEditor
     fireEvent.click(screen.getByTestId('variable-editor-button'));
     expect(screen.getByTestId('variable-editor')).toBeInTheDocument();
     expect(screen.queryByTestId('headers-editor')).toBeNull();
 
-    // Click to open HeadersEditor
     fireEvent.click(screen.getByTestId('headers-editor-button'));
     expect(screen.queryByTestId('variable-editor')).toBeNull();
     expect(screen.getByTestId('headers-editor')).toBeInTheDocument();

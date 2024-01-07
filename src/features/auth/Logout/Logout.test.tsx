@@ -34,13 +34,10 @@ describe('Logout Component', () => {
   it('performs the logout process', async () => {
     render(<Logout />);
 
-    // Verify that logout function is called
     expect(mockLogout).toHaveBeenCalled();
     await waitFor(() => {
-      // Verify that the removeUser action is dispatched
       expect(mockDispatch).toHaveBeenCalledWith(removeUser());
 
-      // Verify that navigation to '/' is triggered
       expect(mockNavigate).toHaveBeenCalledWith('/');
     });
   });

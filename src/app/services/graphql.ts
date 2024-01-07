@@ -6,7 +6,12 @@ import type {
 } from '@reduxjs/toolkit/query/react';
 import { selectApiUrl } from '@/features/editor/editorSlice';
 import type { RootState } from '../store';
-import { getIntrospectionQuery, buildClientSchema, printSchema, IntrospectionQuery } from 'graphql';
+import {
+  getIntrospectionQuery,
+  buildClientSchema,
+  printSchema,
+  IntrospectionQuery,
+} from 'graphql';
 
 const dynamicBaseQuery: BaseQueryFn<
   string | FetchArgs,
@@ -14,7 +19,6 @@ const dynamicBaseQuery: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   const baseUrl = selectApiUrl(api.getState() as RootState);
-  // gracefully handle scenarios where data to generate the URL is missing
   if (!baseUrl) {
     return {
       error: {
@@ -46,8 +50,6 @@ export const api = createApi({
         url: '',
         headers,
         method: 'POST',
-        // fetchBaseQuery automatically adds `content-type: application/json` to
-        // the Headers and calls `JSON.stringify(patch)`
         body: { query, variables },
       }),
     }),
@@ -59,7 +61,7 @@ export const api = createApi({
           query: getIntrospectionQuery(),
         },
       }),
-      transformResponse: (response: {data: IntrospectionQuery}) => {
+      transformResponse: (response: { data: IntrospectionQuery }) => {
         const result = response.data;
         const schema = buildClientSchema(result);
         return printSchema(schema);

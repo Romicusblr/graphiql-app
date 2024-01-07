@@ -28,7 +28,7 @@ const CodeEditor = () => {
     if (!query.trim() || !apiUrl.trim()) {
       return;
     }
-    
+
     trigger({ query, headers, variables });
   };
 
