@@ -51,7 +51,7 @@ describe('Login Component', () => {
       target: { value: 'test@example.com' },
     });
     fireEvent.change(screen.getByLabelText(/Password/i), {
-      target: { value: 'password123' },
+      target: { value: 'password123!' },
     });
     fireEvent.click(screen.getByRole('button'));
 
@@ -59,7 +59,7 @@ describe('Login Component', () => {
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
         email: 'test@example.com',
-        password: 'password123',
+        password: 'password123!',
       });
       expect(mockDispatch).toHaveBeenCalled();
       expect(mockNavigate).toHaveBeenCalledWith('/app');

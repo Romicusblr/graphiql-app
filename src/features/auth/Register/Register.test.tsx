@@ -52,7 +52,7 @@ describe('Login Component', () => {
       target: { value: 'test@example.com' },
     });
     fireEvent.change(screen.getByLabelText(/password/i), {
-      target: { value: 'password123' },
+      target: { value: 'password123!' },
     });
     fireEvent.click(screen.getByRole('button'));
 
@@ -61,7 +61,7 @@ describe('Login Component', () => {
       expect(mockRegister).toHaveBeenCalledWith({
         name: 'Test User',
         email: 'test@example.com',
-        password: 'password123',
+        password: 'password123!',
       });
       expect(mockNavigate).toHaveBeenCalledWith('/');
     });
