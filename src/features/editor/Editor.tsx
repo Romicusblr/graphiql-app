@@ -10,11 +10,11 @@ import {
 } from '@/features/editor/editorSlice';
 import { useLazyGqlQuery } from '@/app/services/graphql';
 import { prettifyGraphql } from '@/utils/prettyfier';
-import { CodeInput } from '@/features/editor/CodeInput';
+import { CodeInput } from '@/features/editor/CodeMirror/CodeInput';
 import { RunButton } from '@/components/buttons/RunButton';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
-import { CodeOutput } from '@/features/editor/CodeOutput';
+import { CodeOutput } from '@/features/editor/CodeMirror/CodeOutput';
 import { EditorSideBar } from './EditorSideBar';
 import { EditorBottomBar } from './EditorBottomBar';
 

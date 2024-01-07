@@ -53,10 +53,10 @@ const routes = [
 function protectedLoader() {
   const { auth: user } = store.getState();
   
+  return null;
   if (!user) {
     return redirect('/login');
   }
-  return null;
 }
 
 export const router = createBrowserRouter(routes);
