@@ -1,14 +1,21 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import * as reduxHooks from '@/hooks/store';
 import { CodeInput } from './CodeInput';
 import { CodeOutput } from './CodeOutput';
 import { VariableEditor } from './VariableEditor';
 import { HeadersEditor } from './HeadersEditor';
+import { useAppDispatch, useAppSelector } from '@/hooks/store';
+import {
+  selectApiUrl,
+  selectHeaders,
+  selectQuery,
+  selectVariables,
+} from '../editorSlice';
 
-type DispatchType = typeof reduxHooks.useAppDispatch extends () => infer D
-  ? D
-  : never;
-type SelectorType = typeof reduxHooks.useAppSelector;
+jest.mock('@/hooks/store', () => ({
+  useAppDispatch: jest.fn(),
+  useAppSelector: jest.fn(),
+}));
+
 interface MyElement extends HTMLElement {
   cmView: { dom: { innerHTML: string } };
 }
@@ -22,15 +29,29 @@ const textareaComponents = [
 
 describe.each(textareaComponents)('CodeMirror Component', (Component) => {
   const mockDispatch = jest.fn();
-  const mockSelector = jest.fn();
+  const mockSelectApiUrl = jest.fn().mockReturnValue('');
+  const mockSelectQuery = jest.fn().mockReturnValue('');
+  const mockSelectHeaders = jest.fn().mockReturnValue('{}');
+  const mockSelectVariables = jest.fn().mockReturnValue('');
 
   beforeEach(() => {
-    jest
-      .spyOn(reduxHooks, 'useAppDispatch')
-      .mockReturnValue(mockDispatch as DispatchType);
-    jest
-      .spyOn(reduxHooks, 'useAppSelector')
-      .mockImplementation(mockSelector as SelectorType);
+    jest.spyOn(JSON, 'parse').mockImplementation(jest.fn());
+    (useAppDispatch as jest.Mock).mockReturnValue(mockDispatch);
+    (useAppSelector as jest.Mock).mockImplementation((selector) => {
+      if (selector === selectApiUrl) {
+        return mockSelectApiUrl();
+      }
+      if (selector === selectQuery) {
+        return mockSelectQuery();
+      }
+      if (selector === selectHeaders) {
+        return mockSelectHeaders();
+      }
+      if (selector === selectVariables) {
+        return mockSelectVariables();
+      }
+      return undefined;
+    });
   });
 
   afterEach(() => {
