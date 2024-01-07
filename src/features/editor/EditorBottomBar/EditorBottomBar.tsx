@@ -3,7 +3,7 @@ import { VariableEditor } from '@/features/editor/CodeMirror/VariableEditor';
 import { HeadersEditor } from '@/features/editor/CodeMirror/HeadersEditor';
 import { VariableEditorButton } from '@/components/buttons/VariableEditorButton';
 import { HeadersEditorButton } from '@/components/buttons/HeadersEditorButton';
-import { ApiSelection } from '@/features/editor/ApiSelection/ApiSelection';
+import { ApiSelection } from '@/features/editor/ApiSelection';
 
 const EditorBottomBar = () => {
   const [variableIsOpen, setVariableIsOpen] = useState(false);
