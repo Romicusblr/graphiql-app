@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { setUser } from '@/features/auth/authSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,11 +11,12 @@ import { useLocalization } from '@/hooks/localization';
 import CheckboxForm from '@/components/UI/CheckboxForm';
 import { LoginUserDTO } from '@/types';
 import { useLoginMutation } from '@/app/services/auth';
+import { useAppDispatch } from '@/hooks/store';
 
 const Login = () => {
   const { strings } = useLocalization();
   const [login] = useLoginMutation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const {
@@ -42,7 +42,7 @@ const Login = () => {
     >
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
-        <InputForm type="text" name="email" register={register} />
+        <InputForm type="text" name="email" id="email" register={register} />
         {errors.email && (
           <p className="mt-2 p-1 text-white bg-red-800">
             {errors.email?.message}
@@ -52,6 +52,7 @@ const Login = () => {
       <div className="mb-5">
         <LabelForm htmlFor={'password'}>{strings.passwordTitle}</LabelForm>
         <InputForm
+          id="password"
           type={checked ? 'text' : 'password'}
           name="password"
           register={register}
