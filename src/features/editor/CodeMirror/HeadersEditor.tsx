@@ -8,7 +8,7 @@ const HeadersEditor = () => {
   const dispatch = useAppDispatch();
 
   const handleChange = (newValue: string) => {
-    dispatch(setHeaders(newValue));
+    dispatch(setHeaders(JSON.parse(newValue)));
   };
 
   const CodeMirrorProps: ReactCodeMirrorProps = {
