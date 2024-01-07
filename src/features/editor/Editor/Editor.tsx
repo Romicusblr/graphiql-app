@@ -1,4 +1,3 @@
-import './styles.css';
 import { useAppSelector, useAppDispatch } from '@/hooks/store';
 import {
   selectApiUrl,
