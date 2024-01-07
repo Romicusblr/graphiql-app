@@ -13,7 +13,7 @@ describe('Footer component', () => {
       screen.getByRole('link', { name: /AndreiArtsiomenko/i })
     ).toBeInTheDocument();
 
-    expect(screen.getAllByAltText('logo RS School')).toBeInTheDocument();
+    expect(screen.getByAltText('logo RS School')).toBeInTheDocument();
 
     const year = new Date().getFullYear();
     expect(screen.getByText(year.toString())).toBeInTheDocument();

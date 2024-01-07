@@ -3,7 +3,9 @@ import { CodeInput } from './CodeInput';
 import * as reduxHooks from '@/hooks/store';
 
 // Mock types
-type DispatchType = typeof reduxHooks.useAppDispatch extends () => infer D ? D : never;
+type DispatchType = typeof reduxHooks.useAppDispatch extends () => infer D
+  ? D
+  : never;
 type SelectorType = typeof reduxHooks.useAppSelector;
 
 describe('CodeInput Component', () => {
@@ -12,8 +14,12 @@ describe('CodeInput Component', () => {
   const mockSelector = jest.fn();
 
   beforeEach(() => {
-    jest.spyOn(reduxHooks, 'useAppDispatch').mockReturnValue(mockDispatch as DispatchType);
-    jest.spyOn(reduxHooks, 'useAppSelector').mockImplementation(mockSelector as SelectorType);
+    jest
+      .spyOn(reduxHooks, 'useAppDispatch')
+      .mockReturnValue(mockDispatch as DispatchType);
+    jest
+      .spyOn(reduxHooks, 'useAppSelector')
+      .mockImplementation(mockSelector as SelectorType);
   });
 
   afterEach(() => {

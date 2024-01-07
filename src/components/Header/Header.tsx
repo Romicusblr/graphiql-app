@@ -1,4 +1,4 @@
-import LanguageToggle from '@/components/LanguageToggle';
+import LanguageToggle from '@/components/LanguageToggle/LanguageToggle';
 import { NavLink } from 'react-router-dom';
 import { useLocalization } from '@/hooks/localization';
 import { useAppSelector } from '@/hooks/store';

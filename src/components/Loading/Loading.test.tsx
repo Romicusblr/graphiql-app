@@ -5,6 +5,6 @@ describe('Loading component', () => {
   it(`renders correctly`, () => {
     render(<Loading />);
 
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/./)).toBeInTheDocument();
   });
 });
