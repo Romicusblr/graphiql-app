@@ -6,7 +6,12 @@ import type {
 } from '@reduxjs/toolkit/query/react';
 import { selectApiUrl } from '@/features/editor/editorSlice';
 import type { RootState } from '../store';
-import { getIntrospectionQuery, buildClientSchema, printSchema, IntrospectionQuery } from 'graphql';
+import {
+  getIntrospectionQuery,
+  buildClientSchema,
+  printSchema,
+  IntrospectionQuery,
+} from 'graphql';
 
 const dynamicBaseQuery: BaseQueryFn<
   string | FetchArgs,
@@ -59,7 +64,7 @@ export const api = createApi({
           query: getIntrospectionQuery(),
         },
       }),
-      transformResponse: (response: {data: IntrospectionQuery}) => {
+      transformResponse: (response: { data: IntrospectionQuery }) => {
         const result = response.data;
         const schema = buildClientSchema(result);
         return printSchema(schema);

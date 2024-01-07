@@ -41,7 +41,9 @@ describe('Login Component', () => {
 
   it('submits the form and navigate', async () => {
     // Arrange: Mock the login function to resolve successfully
-    mockRegister.mockReturnValueOnce({ unwrap: () => Promise.resolve('mockUser') });
+    mockRegister.mockReturnValueOnce({
+      unwrap: () => Promise.resolve('mockUser'),
+    });
 
     // Act: Render the component and fill in the form
     render(<Register />);

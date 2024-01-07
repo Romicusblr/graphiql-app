@@ -1,6 +1,8 @@
 jest.mock('@/components/buttons/DocsButton', () => ({
   DocsButton: ({ handleClick }: IButtonProps) => (
-    <button onClick={handleClick} data-testid="docs-button">Docs</button>
+    <button onClick={handleClick} data-testid="docs-button">
+      Docs
+    </button>
   ),
 }));
 

@@ -47,7 +47,7 @@ const Register = () => {
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
-        <InputForm type="text" register={register} name="email" id="email"/>
+        <InputForm type="text" register={register} name="email" id="email" />
         {errors.email && (
           <p className="mt-2 p-1 text-white bg-red-800">
             {errors.email?.message}

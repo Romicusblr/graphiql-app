@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { CodeInput} from '@/features/editor/CodeMirror';
+import { CodeInput } from '@/features/editor/CodeMirror';
 import * as reduxHooks from '@/hooks/store';
 
 // Mock types
