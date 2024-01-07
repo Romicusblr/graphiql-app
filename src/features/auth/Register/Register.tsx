@@ -38,7 +38,7 @@ const Register = () => {
     >
       <div className="mb-5">
         <LabelForm htmlFor={'name'}>{strings.nameTitle}</LabelForm>
-        <InputForm type="text" register={register} name="name" />
+        <InputForm type="text" register={register} name="name" id="name" />
         {errors.name && (
           <p className="mt-2 p-1 text-white bg-red-800">
             {errors.name?.message}
@@ -47,7 +47,7 @@ const Register = () => {
       </div>
       <div className="mb-5">
         <LabelForm htmlFor={'email'}>{strings.emailTitle}</LabelForm>
-        <InputForm type="text" register={register} name="email" />
+        <InputForm type="text" register={register} name="email" id="email"/>
         {errors.email && (
           <p className="mt-2 p-1 text-white bg-red-800">
             {errors.email?.message}
@@ -60,6 +60,7 @@ const Register = () => {
           type={checked ? 'text' : 'password'}
           register={register}
           name="password"
+          id="password"
         />
         <CheckboxForm checked={checked} onChange={handleChange} />
         {errors.password && (
