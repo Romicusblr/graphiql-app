@@ -18,7 +18,7 @@ const ApiSelection = () => {
       defaultValue={apiUrl}
       onChange={handleInputChange}
       placeholder={strings.apiSelectionPlaceholder}
-      className="w-full rounded-xl outline-none p-2 mt-1 ml-2 caret-gray-400 bg-gray-800 text-gray-400 placeholder:text-gray-600"
+      className="w-full rounded-lg ml-1 outline-none p-2 caret-gray-400 bg-gray-800 text-gray-400 placeholder:text-gray-600"
     />
   );
 };

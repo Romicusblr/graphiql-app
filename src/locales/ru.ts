@@ -14,9 +14,9 @@ const ruStrings = {
   hidePassword: 'Скрыть пароль',
   docsTitle: 'Документация',
   loadingTitle: 'Загрузка',
-  runButton: 'Run query',
-  prettifyButton: 'Prettify',
-  clearButton: 'Clear',
+  runButton: 'Выполнить запрос',
+  prettifyButton: 'Приукрасить',
+  clearButton: 'Очистить',
 } as const;
 
 export default ruStrings;
