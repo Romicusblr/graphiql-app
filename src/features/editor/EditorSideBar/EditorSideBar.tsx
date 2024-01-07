@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DocsButton } from '@/components/buttons/DocsButton';
-import { DocsExplorer } from '@/features/editor/DocsExplorer';
+import { DocsExplorer } from '@/features/editor/DocsExplorer/DocsExplorer';
 
 const EditorSideBar = () => {
   const [docsIsOpen, setDocsIsOpen] = useState(false);

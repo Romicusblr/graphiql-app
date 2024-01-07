@@ -10,7 +10,7 @@ import {
   selectHeaders,
   selectQuery,
   selectVariables,
-} from './editorSlice';
+} from '../editorSlice';
 
 jest.mock('@/hooks/store', () => ({
   useAppDispatch: jest.fn(),

@@ -6,16 +6,16 @@ import {
   selectQuery,
   selectVariables,
   setQuery,
-} from './editorSlice';
+} from '../editorSlice';
 import { useLazyGqlQuery } from '@/app/services/graphql';
 import { prettifyGraphql } from '@/utils/prettyfier';
-import { CodeInput } from './CodeMirror/CodeInput';
+import { CodeInput } from '../CodeMirror/CodeInput';
 import { RunButton } from '@/components/buttons/RunButton';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
-import { CodeOutput } from './CodeMirror/CodeOutput';
-import { EditorSideBar } from './EditorSideBar';
-import { EditorBottomBar } from './EditorBottomBar';
+import { CodeOutput } from '../CodeMirror/CodeOutput';
+import { EditorSideBar } from '../EditorSideBar/EditorSideBar';
+import { EditorBottomBar } from '../EditorBottomBar/EditorBottomBar';
 
 const CodeEditor = () => {
   const dispatch = useAppDispatch();
