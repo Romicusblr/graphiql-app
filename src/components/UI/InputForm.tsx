@@ -8,16 +8,16 @@ interface PropsTypes<T extends FieldValues>
 }
 
 const InputForm = <T extends FieldValues>({
-  type = 'text', // default type is text
+  type = 'text',
   name,
   register,
-  ...rest // rest of the input props
+  ...rest
 }: PropsTypes<T>) => {
   return (
     <input
       type={type}
       {...register(name)}
-      {...rest} // spread the rest of the props here
+      {...rest}
       className={`block w-full rounded-md bg-gray-400 border-2 border-gray-400 p-1.5 text-gray-800 focus:outline-gray-800 sm:text-sm sm:leading-6 ${
         rest.className || ''
       }`}

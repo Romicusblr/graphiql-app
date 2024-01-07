@@ -29,16 +29,13 @@ describe('EditorBottomBar Component', () => {
   it('toggles VariableEditor and HeadersEditor on button clicks', () => {
     render(<EditorBottomBar />);
 
-    // Initially, editors should not be visible
     expect(screen.queryByTestId('variable-editor')).toBeNull();
     expect(screen.queryByTestId('headers-editor')).toBeNull();
 
-    // Click to open VariableEditor
     fireEvent.click(screen.getByTestId('variable-editor-button'));
     expect(screen.getByTestId('variable-editor')).toBeInTheDocument();
     expect(screen.queryByTestId('headers-editor')).toBeNull();
 
-    // Click to open HeadersEditor
     fireEvent.click(screen.getByTestId('headers-editor-button'));
     expect(screen.queryByTestId('variable-editor')).toBeNull();
     expect(screen.getByTestId('headers-editor')).toBeInTheDocument();

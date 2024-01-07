@@ -42,10 +42,8 @@ describe('Login Component', () => {
   });
 
   it('submits the form and navigates on successful login', async () => {
-    // Arrange: Mock the login function to resolve successfully
     mockLogin.mockReturnValueOnce({ unwrap: () => Promise.resolve('mockUser') });
 
-    // Act: Render the component and fill in the form
     render(<Login />);
     fireEvent.change(screen.getByLabelText(/Email/i), {
       target: { value: 'test@example.com' },
@@ -55,7 +53,6 @@ describe('Login Component', () => {
     });
     fireEvent.click(screen.getByRole('button'));
 
-    // Assert: Check if the login function and navigation were called correctly
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith({
         email: 'test@example.com',

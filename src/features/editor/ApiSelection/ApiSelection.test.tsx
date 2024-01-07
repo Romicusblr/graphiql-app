@@ -3,7 +3,6 @@ import * as reduxHooks from '@/hooks/store';
 import { ApiSelection } from './ApiSelection';
 
 describe('ApiSelection Component', () => {
-  // Mock Redux hooks
   const mockDispatch = jest.fn();
   const mockSelector = jest.fn();
 
