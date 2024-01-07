@@ -1,6 +1,8 @@
-import LinkGitHub from './UI/LinkGitHub';
+import LinkGitHub from '../UI/LinkGitHub';
 
 const Footer = () => {
+    const year = new Date().getFullYear();
+
   return (
     <footer className="flex justify-between items-center shrink-0 bg-gray-800 px-8 py-1 text-gray-400">
       <ul>
@@ -20,9 +22,9 @@ const Footer = () => {
           />
         </li>
       </ul>
-      <div className="font-extrabold text-base">2023</div>
+      <div className="font-extrabold text-base">{year}</div>
       <div>
-        <a href="https://rs.school/react/" rel="noreferrer" target="_blank">
+        <a href="@/components/Footer/Footer" rel="noreferrer" target="_blank">
           <img
             src="/images/logo-rss.svg"
             alt="logo RS School"
