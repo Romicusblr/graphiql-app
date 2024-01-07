@@ -1,37 +1,35 @@
-import './styles.css';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '@/hooks/store';
+import { useAppSelector, useAppDispatch } from '@/hooks/store';
 import {
   selectApiUrl,
   selectHeaders,
   selectQuery,
   selectVariables,
   setQuery,
-} from '@/features/editor/editorSlice';
+} from '../editorSlice';
 import { useLazyGqlQuery } from '@/app/services/graphql';
 import { prettifyGraphql } from '@/utils/prettyfier';
-import { CodeInput } from '@/features/editor/CodeInput';
+import { CodeInput } from '../CodeMirror/CodeInput';
 import { RunButton } from '@/components/buttons/RunButton';
 import { PrettifyButton } from '@/components/buttons/PrettifyButton';
 import { ClearButton } from '@/components/buttons/ClearButton';
-import { CodeOutput } from '@/features/editor/CodeOutput';
-import { EditorSideBar } from './EditorSideBar';
-import { EditorBottomBar } from './EditorBottomBar';
+import { CodeOutput } from '../CodeMirror/CodeOutput';
+import { EditorSideBar } from '../EditorSideBar/EditorSideBar';
+import { EditorBottomBar } from '../EditorBottomBar/EditorBottomBar';
 
 const CodeEditor = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const apiUrl = useAppSelector(selectApiUrl);
   const query = useAppSelector(selectQuery);
   const headers = useAppSelector(selectHeaders);
   const variables = useAppSelector(selectVariables);
   const [trigger] = useLazyGqlQuery();
 
-  const runQuery = async () => {
+  const runQuery = () => {
     if (!query.trim() || !apiUrl.trim()) {
       return;
     }
-
-    await trigger({ query, headers, variables });
+    
+    trigger({ query, headers, variables });
   };
 
   const prettifyQuery = async () => {
