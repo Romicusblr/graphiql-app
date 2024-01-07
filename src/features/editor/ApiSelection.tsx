@@ -1,13 +1,12 @@
 import { useLocalization } from '@/hooks/localization';
 import { selectApiUrl, setApiUrl } from '@/features/editor/editorSlice';
-import { useAppSelector } from '@/hooks/store';
-import { useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '@/hooks/store';
 import { ChangeEvent } from 'react';
 
 const ApiSelection = () => {
   const { strings } = useLocalization();
   const apiUrl = useAppSelector(selectApiUrl);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setApiUrl(e.target.value));
